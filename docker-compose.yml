@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  php:
+    build: .
+    container_name: mdc_reinigung_php
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - mysql
+    networks:
+      - mdc_network
+
+  mysql:
+    image: mysql:8.0
+    container_name: mdc_reinigung_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: mdc_cleaning
+      MYSQL_USER: mdc_user
+      MYSQL_PASSWORD: mdc_pass123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
+    networks:
+      - mdc_network
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: mdc_reinigung_phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: root123
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    networks:
+      - mdc_network
+
+volumes:
+  mysql_data:
+
+networks:
+  mdc_network:
+    driver: bridge

@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /config/
+Disallow: /includes/
+Disallow: /uploads/
+Disallow: /archive/
+
+# Disallow user-specific pages
+Disallow: /login.php
+Disallow: /logout.php
+Disallow: /dashboard.php
+
+# Disallow API endpoints
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://www.mdc-fm.de/sitemap.xml
