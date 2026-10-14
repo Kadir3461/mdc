@@ -6,10 +6,10 @@
 /* ===== CSS Variables ===== */
 :root {
     /* Colors */
-    --primary-color: #0066CC;
-    --primary-dark: #004C99;
-    --primary-light: #3385D6;
-    --secondary-color: #00A3E0;
+    --primary-color: #2A7DE1;
+    --primary-dark: #155EB8;
+    --primary-light: #73AEEF;
+    --secondary-color: #2BB5E8;
     --accent-color: #FFB81C;
     
     --text-dark: #1A1A1A;
@@ -379,7 +379,7 @@ img {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(0, 102, 204, 0.9) 0%, rgba(0, 76, 153, 0.85) 100%);
+    background: linear-gradient(135deg, rgba(17, 60, 120, 0.62) 0%, rgba(17, 60, 120, 0.44) 50%, rgba(17, 60, 120, 0.65) 100%);
     z-index: 1;
 }
 
@@ -687,6 +687,86 @@ select.form-control {
 .social-links a:hover {
     background-color: var(--accent-color);
     transform: translateY(-2px);
+}
+
+/* ===== Home Badge / Certification Block ===== */
+.home-badge-section {
+    padding: 2.5rem 0 0;
+    background: #ffffff;
+}
+
+.home-badge-grid {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.home-badge-card {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    text-align: center;
+}
+
+.home-badge-card--secondary {
+    max-width: 460px;
+    text-align: center;
+    background: transparent;
+    padding: 0;
+}
+
+.home-badge-icon {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-badge-icon--image {
+    width: 260px;
+    height: 110px;
+    padding: 0;
+    margin: 0 auto 0.25rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.home-badge-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    filter: none;
+}
+
+.home-badge-brand {
+    font-size: 2.1rem;
+    line-height: 1.15;
+    font-weight: 700;
+    color: #0c3b74;
+    letter-spacing: -0.04em;
+    margin-bottom: 0.75rem;
+}
+
+.home-badge-content p {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: #0f0f10;
+    max-width: 360px;
+    margin: 0 auto;
 }
 
 /* ===== Scroll to Top ===== */

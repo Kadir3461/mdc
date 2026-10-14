@@ -4,6 +4,10 @@ if (!defined('DB_HOST')) {
 }
 
 $current_page = basename($_SERVER['PHP_SELF'], '.php');
+$canonical_url = rtrim(SITE_URL, '/') . ($_SERVER['REQUEST_URI'] ?? '/');
+$og_image_url = rtrim(SITE_URL, '/') . '/assets/images/MDC_Facility_Management_Logo_v2.png';
+$page_title_tag = isset($page_title) ? trim((string) $page_title) : 'MDC Facility & Cleaning';
+$page_description_tag = isset($page_description) ? trim((string) $page_description) : 'Professionelle Reinigungsdienstleistungen in München für Büro-, Industrie- und Gebäudereinigung.';
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -11,31 +15,46 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <!-- SEO Meta Tags -->
-    <title><?php echo isset($page_title) ? e($page_title) . ' | MDC Facility & Cleaning' : 'MDC Facility & Cleaning | Professionelle Gebäudereinigung München'; ?></title>
-    <meta name="description" content="<?php echo isset($page_description) ? e($page_description) : 'MDC Facility & Cleaning - Ihr professioneller Partner für Büroreinigung, Unterhaltsreinigung, Fensterreinigung, Shopreinigung, Treppenhausreinigung und weitere Reinigungsdienstleistungen in München und Umgebung.'; ?>">
-    <meta name="keywords" content="Büroreinigung München, Unterhaltsreinigung München, Fensterreinigung München, Shopreinigung München, Treppenhausreinigung München, Bauendreinigung München, Fassadenreinigung München, Glasreinigung München, Photovoltaikreinigung München, Reinigungsfirma München">
+    <title><?php echo e($page_title_tag); ?> | MDC Facility & Cleaning</title>
+    <meta name="description" content="<?php echo e($page_description_tag); ?>">
+    <meta name="keywords" content="Büroreinigung München, Unterhaltsreinigung München, Fensterreinigung München, Shopreinigung München, Treppenhausreinigung München, Bauendreinigung München, Fassadenreinigung München, Glasreinigung München, Photovoltaikreinigung München, Reinigungsfirma München, Facility Management München">
     <meta name="author" content="MDC Facility & Cleaning">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="<?php echo SITE_URL . $_SERVER['REQUEST_URI']; ?>">
-    
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#0a5dbb">
+    <link rel="canonical" href="<?php echo e($canonical_url); ?>">
+    <link rel="alternate" hreflang="de" href="<?php echo e($canonical_url); ?>">
+    <link rel="alternate" hreflang="x-default" href="<?php echo e($canonical_url); ?>">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="<?php echo rtrim(SITE_URL, '/'); ?>/sitemap.xml">
+
     <!-- Open Graph Tags -->
-    <meta property="og:title" content="<?php echo isset($page_title) ? e($page_title) : 'MDC Facility & Cleaning'; ?>">
-    <meta property="og:description" content="<?php echo isset($page_description) ? e($page_description) : 'Professionelle Gebäudereinigung in München'; ?>">
+    <meta property="og:title" content="<?php echo e($page_title_tag); ?> | MDC Facility & Cleaning">
+    <meta property="og:description" content="<?php echo e($page_description_tag); ?>">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="<?php echo SITE_URL . $_SERVER['REQUEST_URI']; ?>">
-    <meta property="og:image" content="<?php echo SITE_URL; ?>/assets/images/og-image.jpg">
+    <meta property="og:url" content="<?php echo e($canonical_url); ?>">
+    <meta property="og:image" content="<?php echo e($og_image_url); ?>">
+    <meta property="og:image:secure_url" content="<?php echo e($og_image_url); ?>">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="MDC Facility & Cleaning Logo">
+    <meta property="og:site_name" content="MDC Facility & Cleaning">
     <meta property="og:locale" content="de_DE">
-    
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo e($page_title_tag); ?> | MDC Facility & Cleaning">
+    <meta name="twitter:description" content="<?php echo e($page_description_tag); ?>">
+    <meta name="twitter:image" content="<?php echo e($og_image_url); ?>">
+
     <!-- Schema.org LocalBusiness Markup -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "MDC Facility & Cleaning",
-        "image": "<?php echo SITE_URL; ?>/assets/images/MDC_Logo_mit_Slogan.jpeg",
-        "description": "Professionelle Büroreinigung, Unterhaltsreinigung, Fensterreinigung, Treppenhausreinigung und weitere Reinigungsdienstleistungen in München",
+        "image": "<?php echo rtrim(SITE_URL, '/'); ?>/assets/images/MDC_Facility_Management_Logo_v2.png",
+        "description": "Professionelle Büroreinigung, Unterhaltsreinigung, Fensterreinigung, Treppenhausreinigung und weitere Reinigungsdienstleistungen in München.",
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "Rosa-Kempf-Str. 23",
@@ -43,19 +62,11 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
             "postalCode": "81248",
             "addressCountry": "DE"
         },
-        "telephone": "+49-89-XXXXXXXX",
+        "telephone": "+49 1516 7664588",
         "email": "Info@mdc-fm.de",
-        "url": "<?php echo SITE_URL; ?>",
-        "priceRange": "$$",
-        "areaServed": {
-            "@type": "GeoCircle",
-            "geoMidpoint": {
-                "@type": "GeoCoordinates",
-                "latitude": "48.1351",
-                "longitude": "11.5820"
-            },
-            "geoRadius": "50000"
-        },
+        "url": "<?php echo rtrim(SITE_URL, '/'); ?>",
+        "priceRange": "€€",
+        "areaServed": "München",
         "openingHoursSpecification": [
             {
                 "@type": "OpeningHoursSpecification",
@@ -66,17 +77,16 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
         ]
     }
     </script>
-    
+
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
-    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
-    
+    <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg">
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/assets/css/style.css">
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,7 +102,7 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
                     <div class="contact-info">
                         <a href="tel:+4989XXXXXXXX" class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>+49 89 XXX XXXX</span>
+                            <span>+49 1516 7664588</span>
                         </a>
                         <a href="mailto:Info@mdc-fm.de" class="contact-item">
                             <i class="fas fa-envelope"></i>
@@ -109,11 +119,6 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
                                 <i class="fas fa-sign-out-alt"></i>
                                 <span>Abmelden</span>
                             </a>
-                        <?php else: ?>
-                            <a href="/login.php" class="header-link">
-                                <i class="fas fa-sign-in-alt"></i>
-                                <span>Login</span>
-                            </a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -123,8 +128,8 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
         <div class="header-main">
             <div class="container">
                 <nav class="main-nav">
-                    <a href="/" class="logo">
-                        <img src="/assets/images/MDC_Logo_mit_Slogan.jpeg" alt="MDC Facility & Cleaning Logo" style="height: 100%; width: 100;">
+                    <a href="/" class="logo" aria-label="Startseite" style="display: none;">
+                        <img src="/uploads/images/MDC%20Facility%20Management%20Logo%20v2.png" alt="MDC Facility & Cleaning Logo" style="height: 100%; width: 100;">
                     </a>
                     
                     <button class="mobile-menu-toggle" aria-label="Menü öffnen">
@@ -146,6 +151,11 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
                                 <li><a href="/leistungen.php#shopreinigung">Shopreinigung</a></li>
                                 <li><a href="/leistungen.php#treppenhausreinigung">Treppenhausreinigung</a></li>
                                 <li><a href="/leistungen.php#bauendreinigung">Bauendreinigung</a></li>
+                                <li><a href="/leistungen.php#hausmeisterservice">Hausmeisterservice</a></li>
+                                <li><a href="/leistungen.php#winterdienst">Winterdienst</a></li>
+                                <li><a href="/leistungen.php#gruenanlagenservice">Grünanlagenservice</a></li>
+                                <li><a href="/leistungen.php#umzug-entsorgung">Umzug &amp; Entsorgung</a></li>
+                                <li><a href="/leistungen.php#tiefgaragenreinigung">Tiefgaragenreinigung</a></li>
                                 <li><a href="/leistungen.php#fassadenreinigung">Fassadenreinigung</a></li>
                                 <li><a href="/leistungen.php#glasreinigung">Glasreinigung</a></li>
                                 <li><a href="/leistungen.php#photovoltaikreinigung">Photovoltaikreinigung</a></li>

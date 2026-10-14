@@ -2,13 +2,16 @@
 require_once 'config/database.php';
 
 $page_title = 'Kontakt';
-$page_description = 'Kontaktieren Sie MDC Facility & Cleaning für professionelle Reinigungslösungen in München. Kostenloses Angebot anfragen ☎ +49 89 XXX XXXX';
+$page_description = 'Kontaktieren Sie MDC Facility & Cleaning für professionelle Reinigungslösungen in München. Kostenloses Angebot anfragen ☎ +49 1516 7664588';
 
 $success = false;
 $error = false;
+$csrfError = false;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token'])) {
-    if (validateCSRFToken($_POST['csrf_token'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $submittedToken = $_POST['csrf_token'] ?? '';
+
+    if (validateCSRFToken($submittedToken)) {
         $db = getDB();
         
         try {
@@ -31,7 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token'])) {
             
             // E-Mail senden
             $to = CONTACT_EMAIL;
-            $subject = 'Neue Kontaktanfrage von ' . ($_POST['company_name'] ?? $_POST['contact_person']);
+            $subject = 'Neue Kontaktanfrage von ' . preg_replace('/[\r\n]+/', ' ', ($_POST['company_name'] ?: $_POST['contact_person']));
+            $subject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
+            $replyTo = filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL);
             $message = "Neue Kontaktanfrage über die Website:\n\n";
             $message .= "Firma: " . ($_POST['company_name'] ?? '-') . "\n";
             $message .= "Ansprechpartner: " . $_POST['contact_person'] . "\n";
@@ -40,10 +45,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token'])) {
             $message .= "Gewünschte Leistung: " . ($_POST['service_type'] ?? '-') . "\n\n";
             $message .= "Nachricht:\n" . $_POST['message'] . "\n";
             
-            $headers = "From: noreply@mdc-fm.de\r\n";
-            $headers .= "Reply-To: " . $_POST['email'] . "\r\n";
+            $headers = "From: " . MAIL_FROM . "\r\n";
+            if ($replyTo) {
+                $headers .= "Reply-To: " . $replyTo . "\r\n";
+            }
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
             
-            mail($to, $subject, $message, $headers);
+            if (!mail($to, $subject, $message, $headers)) {
+                error_log('Contact form: mail() fehlgeschlagen');
+            }
+            
+            // Automatische Bestätigung an den Kunden
+            if ($replyTo) {
+                $confirmSubject = '=?UTF-8?B?' . base64_encode('Ihre Anfrage bei MDC Facility & Cleaning') . '?=';
+                $confirmMessage = "Sehr geehrte Damen und Herren,\n\n";
+                $confirmMessage .= "vielen Dank für Ihre Anfrage und Ihr Interesse an unseren Dienstleistungen.\n\n";
+                $confirmMessage .= "Wir haben Ihre Nachricht erhalten und werden Ihr Anliegen schnellstmöglich prüfen.\n\n";
+                $confirmMessage .= "Wir melden uns in Kürze bei Ihnen zurück.\n\n";
+                $confirmMessage .= "Mit freundlichen Grüßen\n";
+                $confirmMessage .= "Ihr Team von MDC Facility & Cleaning\n";
+                
+                $confirmHeaders = "From: =?UTF-8?B?" . base64_encode('MDC Facility & Cleaning') . "?= <" . MAIL_FROM . ">\r\n";
+                $confirmHeaders .= "Reply-To: " . CONTACT_EMAIL . "\r\n";
+                $confirmHeaders .= "MIME-Version: 1.0\r\n";
+                $confirmHeaders .= "Content-Type: text/plain; charset=UTF-8\r\n";
+                
+                if (!mail($replyTo, $confirmSubject, $confirmMessage, $confirmHeaders)) {
+                    error_log('Contact form: Bestätigungsmail fehlgeschlagen');
+                }
+            }
             
             $success = true;
         } catch (Exception $e) {
@@ -52,6 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['csrf_token'])) {
         }
     } else {
         $error = true;
+        $csrfError = true;
     }
 }
 
@@ -108,7 +140,7 @@ include 'includes/header.php';
                             <div>
                                 <h4 style="margin-bottom: 0.25rem;">Telefon</h4>
                                 <p style="margin: 0;">
-                                    <a href="tel:+4989XXXXXXXX" style="font-size: 1.125rem;">+49 89 XXX XXXX</a>
+                                    <a href="tel:+4989XXXXXXXX" style="font-size: 1.125rem;">+49 1516 7664588</a>
                                 </p>
                             </div>
                         </div>
@@ -165,13 +197,17 @@ include 'includes/header.php';
                 <?php if ($error): ?>
                     <div class="alert alert-error">
                         <i class="fas fa-exclamation-circle"></i>
-                        <strong>Fehler!</strong> Ihre Nachricht konnte nicht versendet werden. 
-                        Bitte versuchen Sie es erneut oder kontaktieren Sie uns telefonisch.
+                        <strong>Fehler!</strong>
+                        <?php if ($csrfError): ?>
+                            Ihre Sitzung ist abgelaufen. Bitte aktualisieren Sie die Seite und senden Sie das Formular erneut.
+                        <?php else: ?>
+                            Ihre Nachricht konnte nicht versendet werden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns telefonisch.
+                        <?php endif; ?>
                     </div>
                 <?php endif; ?>
                 
                 <form id="contactForm" method="POST" action="/kontakt.php#angebot">
-                    <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
+                    <input type="hidden" name="csrf_token" value="<?php echo e(generateCSRFToken()); ?>">
                     
                     <div class="form-group">
                         <label for="company_name">Firmenname</label>
@@ -201,12 +237,22 @@ include 'includes/header.php';
                         <label for="service_type">Gewünschte Leistung *</label>
                         <select id="service_type" name="service_type" class="form-control" required>
                             <option value="">Bitte wählen...</option>
-                            <option value="Industriereinigung">Industriereinigung</option>
-                            <option value="Gebäudereinigung">Gebäudereinigung</option>
+                            
+                            
                             <option value="Büroreinigung">Büroreinigung</option>
+                            <option value="Unterhaltsreinigung">Unterhaltsreinigung</option>
+                            <option value="Fensterreinigung">Fensterreinigung</option>
+                            <option value="Shopreinigung">Shopreinigung</option>
+                            <option value="Treppenhausreinigung">Treppenhausreinigung</option>
+                            <option value="Bauendreinigung">Bauendreinigung</option>
                             <option value="Hausmeisterservice">Hausmeisterservice</option>
-                            <option value="Facility Management">Facility Management</option>
-                            <option value="Sonderreinigung">Sonderreinigung</option>
+                            <option value="Winterdienst">Winterdienst</option>
+                            <option value="Grünanlagenservice">Grünanlagenservice</option>
+                            <option value="Umzug & Entsorgung">Umzug &amp; Entsorgung</option>
+                            <option value="Tiefgaragenreinigung">Tiefgaragenreinigung</option>
+                            <option value="Fassadenreinigung">Fassadenreinigung</option>
+                            <option value="Glasreinigung">Glasreinigung</option>
+                            <option value="Photovoltaikreinigung">Photovoltaikreinigung</option>
                             <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
                         </select>
                     </div>

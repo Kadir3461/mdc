@@ -24,7 +24,7 @@ include 'includes/header.php';
     <div class="container">
         <h2 class="text-center">Unser Leistungsspektrum</h2>
         <p class="text-center" style="max-width: 800px; margin: 0 auto var(--spacing-2xl);">
-            Seit über 15 Jahren sind wir Ihr kompetenter Partner für alle Reinigungsdienstleistungen 
+            Seit über 10 Jahren sind wir Ihr kompetenter Partner für alle Reinigungsdienstleistungen 
             im Raum München. Ob Industrie, Gewerbe oder Wohnimmobilien – wir bieten individuelle Lösungen 
             für jeden Bereich.
         </p>
@@ -33,10 +33,10 @@ include 'includes/header.php';
             <!-- Büroreinigung -->
             <div id="bueroreinigung" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069" 
+                    <img src="/uploads/images/B%C3%BCroreinigung.png" 
                          alt="Büroreinigung" 
                          style="width: 100%; height: 250px; object-fit: cover;">
-                    <div style="position: absolute; top: 1rem; left: 1rem;">
+                    <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-briefcase"></i> Büroreinigung
                         </span>
@@ -62,7 +62,7 @@ include 'includes/header.php';
                     <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2070" 
                          alt="Unterhaltsreinigung" 
                          style="width: 100%; height: 250px; object-fit: cover;">
-                    <div style="position: absolute; top: 1rem; left: 1rem;">
+                    <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-broom"></i> Unterhaltsreinigung
                         </span>
@@ -88,7 +88,7 @@ include 'includes/header.php';
                     <img src="/assets/images/Fensterreinigung.png" 
                          alt="Fensterreinigung" 
                          style="width: 100%; height: 250px; object-fit: cover;">
-                    <div style="position: absolute; top: 1rem; left: 1rem;">
+                    <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-window-maximize"></i> Fensterreinigung
                         </span>
@@ -111,10 +111,10 @@ include 'includes/header.php';
             <!-- Shopreinigung -->
             <div id="shopreinigung" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070" 
+                    <img src="/uploads/images/Shoppreinigung.png" 
                          alt="Shopreinigung" 
                          style="width: 100%; height: 250px; object-fit: cover;">
-                    <div style="position: absolute; top: 1rem; left: 1rem;">
+                    <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-store"></i> Shopreinigung
                         </span>
@@ -137,10 +137,10 @@ include 'includes/header.php';
             <!-- Treppenhausreinigung -->
             <div id="treppenhausreinigung" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070" 
+                    <img src="/uploads/images/Treppenhausreinigung.png" 
                          alt="Treppenhausreinigung" 
                          style="width: 100%; height: 250px; object-fit: cover;">
-                    <div style="position: absolute; top: 1rem; left: 1rem;">
+                    <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-stairs"></i> Treppenhausreinigung
                         </span>
@@ -160,13 +160,138 @@ include 'includes/header.php';
                 <a href="/kontakt.php" class="btn btn-outline">Anfragen <i class="fas fa-arrow-right"></i></a>
             </div>
             
+            <!-- Hausmeisterservice -->
+            <div id="hausmeisterservice" class="card" style="display: flex; flex-direction: column;">
+                <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                    <img src="/uploads/images/Hausmeisterservice.png" 
+                         alt="Hausmeisterservice" 
+                         style="width: 100%; height: 250px; object-fit: cover;">
+                    <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
+                        <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
+                            <i class="fas fa-tools"></i> Hausmeisterservice
+                        </span>
+                    </div>
+                </div>
+                <h3>Hausmeisterservice</h3>
+                <p style="flex-grow: 1;">
+                    Verlässliche Wartung, kleine Reparaturen und laufende Pflege für Wohn- und Geschäftsobjekte.
+                </p>
+                <ul style="list-style: none; padding: 0; margin: var(--spacing-md) 0;">
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>Wartung & Reparatur</li>
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>Gebäudepflege</li>
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>Verfügbare Ansprechpartner</li>
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>Flexible Hilfe bei Bedarf</li>
+                </ul>
+                <a href="/kontakt.php" class="btn btn-outline">Anfragen <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Winterdienst -->
+            <div id="winterdienst" class="card" style="display: flex; flex-direction: column;">
+                <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                    <img src="/uploads/images/Winterdienst.png" 
+                         alt="Winterdienst" 
+                         style="width: 100%; height: 250px; object-fit: cover;">
+                    <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
+                        <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
+                            <i class="fas fa-snowflake"></i> Winterdienst
+                        </span>
+                    </div>
+                </div>
+                <h3>Winterdienst</h3>
+                <p style="flex-grow: 1;">
+                    Sicherheit und Ordnung im Winter durch rechtzeitige Streuung, Räumung und Verkehrssicherung.
+                </p>
+                <ul style="list-style: none; padding: 0; margin: var(--spacing-md) 0;">
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>Räumung von Wegen</li>
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>Streuen und Enteisen</li>
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>Parkplätze und Zugänge</li>
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>24/7 Bereitschaft</li>
+                </ul>
+                <a href="/kontakt.php" class="btn btn-outline">Anfragen <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Grünanlagenservice -->
+            <div id="gruenanlagenservice" class="card" style="display: flex; flex-direction: column;">
+                <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                    <img src="/uploads/images/Gr%C3%BCnanlagenservice.png" 
+                         alt="Grünanlagenservice" 
+                         style="width: 100%; height: 250px; object-fit: cover;">
+                    <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
+                        <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
+                            <i class="fas fa-leaf"></i> Grünanlagenservice
+                        </span>
+                    </div>
+                </div>
+                <h3>Grünanlagenservice</h3>
+                <p style="flex-grow: 1;">
+                    Pflegen Sie Außenbereiche, Rasen und Beete mit professioneller Garten- und Grünflächenbetreuung.
+                </p>
+                <ul style="list-style: none; padding: 0; margin: var(--spacing-md) 0;">
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>Rasenpflege</li>
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>Beetpflege</li>
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>Baumpflege</li>
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>Außenanlagen</li>
+                </ul>
+                <a href="/kontakt.php" class="btn btn-outline">Anfragen <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Umzug & Entsorgung -->
+            <div id="umzug-entsorgung" class="card" style="display: flex; flex-direction: column;">
+                <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                    <img src="/uploads/images/Umzug%20%26%20Entsorgung.png" 
+                         alt="Umzug & Entsorgung" 
+                         style="width: 100%; height: 250px; object-fit: cover;">
+                    <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
+                        <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
+                            <i class="fas fa-truck-moving"></i> Umzug &amp; Entsorgung
+                        </span>
+                    </div>
+                </div>
+                <h3>Umzug &amp; Entsorgung</h3>
+                <p style="flex-grow: 1;">
+                    Effizienter Abbau, Transport und fachgerechte Entsorgung bei Umbauten, Umzügen und Renovierungen.
+                </p>
+                <ul style="list-style: none; padding: 0; margin: var(--spacing-md) 0;">
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>Umzugslogistik</li>
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>Rückbau</li>
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>Entsorgung</li>
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>Reinigungsservice</li>
+                </ul>
+                <a href="/kontakt.php" class="btn btn-outline">Anfragen <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Tiefgaragenreinigung -->
+            <div id="tiefgaragenreinigung" class="card" style="display: flex; flex-direction: column;">
+                <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
+                    <img src="/uploads/images/Tiefgaragenreinigung.png" 
+                         alt="Tiefgaragenreinigung" 
+                         style="width: 100%; height: 250px; object-fit: cover;">
+                    <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
+                        <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
+                            <i class="fas fa-square-parking"></i> Tiefgaragenreinigung
+                        </span>
+                    </div>
+                </div>
+                <h3>Tiefgaragenreinigung</h3>
+                <p style="flex-grow: 1;">
+                    Saubere und sichere Tiefgaragen mit fachgerechter Reinigung von Fahrbahnen, Wänden und Technikräumen.
+                </p>
+                <ul style="list-style: none; padding: 0; margin: var(--spacing-md) 0;">
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>Fahrbahnen & Rampen</li>
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>Wand- & Deckenreinigung</li>
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>Stark verschmutzte Bereiche</li>
+                    <li style="padding: 0.25rem 0;"><i class="fas fa-check" style="color: var(--primary-color); margin-right: 0.5rem;"></i>Technikräume</li>
+                </ul>
+                <a href="/kontakt.php" class="btn btn-outline">Anfragen <i class="fas fa-arrow-right"></i></a>
+            </div>
+
             <!-- Bauendreinigung -->
             <div id="bauendreinigung" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?q=80&w=2070" 
+                    <img src="/uploads/images/Bauendreinigung.png" 
                          alt="Bauendreinigung" 
                          style="width: 100%; height: 250px; object-fit: cover;">
-                    <div style="position: absolute; top: 1rem; left: 1rem;">
+                    <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-hard-hat"></i> Bauendreinigung
                         </span>
@@ -189,10 +314,10 @@ include 'includes/header.php';
             <!-- Fassadenreinigung -->
             <div id="fassadenreinigung" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070" 
+                    <img src="/uploads/images/Fassadenreinigung.png" 
                          alt="Fassadenreinigung" 
                          style="width: 100%; height: 250px; object-fit: cover;">
-                    <div style="position: absolute; top: 1rem; left: 1rem;">
+                    <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-building"></i> Fassadenreinigung
                         </span>
@@ -218,7 +343,7 @@ include 'includes/header.php';
                     <img src="/assets/images/Glasreinigung.png" 
                          alt="Glasreinigung" 
                          style="width: 100%; height: 250px; object-fit: cover;">
-                    <div style="position: absolute; top: 1rem; left: 1rem;">
+                    <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-chess-board"></i> Glasreinigung
                         </span>
@@ -241,10 +366,10 @@ include 'includes/header.php';
             <!-- Photovoltaikreinigung -->
             <div id="photovoltaikreinigung" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2072" 
+                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2070&auto=format&fit=crop" 
                          alt="Photovoltaikreinigung" 
                          style="width: 100%; height: 250px; object-fit: cover;">
-                    <div style="position: absolute; top: 1rem; left: 1rem;">
+                    <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-solar-panel"></i> Photovoltaikreinigung
                         </span>
@@ -274,13 +399,11 @@ include 'includes/header.php';
         <div class="grid grid-4">
             <div class="card text-center">
                 <i class="fas fa-certificate" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
-                <h4>15+ Jahre Erfahrung</h4>
-                <p>Kompetenz und Knowhow seit 2009</p>
+                <h4>10+ Jahre Erfahrung</h4>
             </div>
             <div class="card text-center">
                 <i class="fas fa-users-cog" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
                 <h4>Geschultes Personal</h4>
-                <p>50+ professionelle Mitarbeiter</p>
             </div>
             <div class="card text-center">
                 <i class="fas fa-shield-alt" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
@@ -311,7 +434,7 @@ include 'includes/header.php';
             </a>
             <a href="tel:+4989XXXXXXXX" class="btn btn-outline btn-lg">
                 <i class="fas fa-phone"></i>
-                +49 89 XXX XXXX
+                +49 1516 7664588
             </a>
         </div>
     </div>

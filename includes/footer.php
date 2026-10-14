@@ -12,7 +12,7 @@
                             Ihr professioneller Partner für Büroreinigung, Unterhaltsreinigung, Fensterreinigung und weitere professionelle Reinigungsdienstleistungen in München und Umgebung.
                         </p>
                         <div class="footer-logo">
-                            <img src="/assets/images/MDC_Logo_mit_Slogan.jpeg" alt="MDC Facility & Cleaning" style="max-height: 120px;">
+                            <img src="/uploads/images/MDC%20Facility%20Management%20Logo%20v2.png" alt="MDC Facility & Cleaning" style="max-height: 120px;">
                         </div>
                     </div>
                     
@@ -26,6 +26,11 @@
                             <li><a href="/leistungen.php#shopreinigung">Shopreinigung</a></li>
                             <li><a href="/leistungen.php#treppenhausreinigung">Treppenhausreinigung</a></li>
                             <li><a href="/leistungen.php#bauendreinigung">Bauendreinigung</a></li>
+                            <li><a href="/leistungen.php#hausmeisterservice">Hausmeisterservice</a></li>
+                            <li><a href="/leistungen.php#winterdienst">Winterdienst</a></li>
+                            <li><a href="/leistungen.php#gruenanlagenservice">Grünanlagenservice</a></li>
+                            <li><a href="/leistungen.php#umzug-entsorgung">Umzug &amp; Entsorgung</a></li>
+                            <li><a href="/leistungen.php#tiefgaragenreinigung">Tiefgaragenreinigung</a></li>
                             <li><a href="/leistungen.php#fassadenreinigung">Fassadenreinigung</a></li>
                             <li><a href="/leistungen.php#glasreinigung">Glasreinigung</a></li>
                             <li><a href="/leistungen.php#photovoltaikreinigung">Photovoltaikreinigung</a></li>
@@ -43,7 +48,7 @@
                             </li>
                             <li>
                                 <i class="fas fa-phone"></i>
-                                <a href="tel:+4989XXXXXXXX">+49 89 XXX XXXX</a>
+                                <a href="tel:+4989XXXXXXXX">+49 1516 7664588</a>
                             </li>
                             <li>
                                 <i class="fas fa-envelope"></i>

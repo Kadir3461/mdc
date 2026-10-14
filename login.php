@@ -81,7 +81,7 @@ include 'includes/header.php';
         <div style="max-width: 500px; margin: 0 auto;">
             <div class="card" style="padding: var(--spacing-2xl);">
                 <div style="text-align: center; margin-bottom: var(--spacing-xl);">
-                    <img src="/assets/images/MDC_Logo_mit_Slogan.jpeg" alt="MDC Facility & Cleaning" style="max-height: 200px; height: auto; margin: 0 auto var(--spacing-md);">
+                    <img src="/uploads/images/MDC%20Facility%20Management%20Logo%20v2.png" alt="MDC Facility & Cleaning" style="max-height: 200px; height: auto; margin: 0 auto var(--spacing-md);">
                     <h2>Willkommen zurück</h2>
                     <p style="color: var(--text-light);">Melden Sie sich in Ihrem Kundenbereich an</p>
                 </div>

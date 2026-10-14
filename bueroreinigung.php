@@ -16,7 +16,7 @@ include 'includes/header.php';
             Flexibel, zuverlässig und diskret – genau nach Ihren Wünschen.</p>
             <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                 <a href="#angebot" class="btn btn-primary btn-lg">Jetzt Angebot anfragen</a>
-                <a href="tel:+4989XXXXXXXX" class="btn btn-outline btn-lg">☎ +49 89 XXX XXXX</a>
+                <a href="tel:+4989XXXXXXXX" class="btn btn-outline btn-lg">☎ +49 1516 7664588</a>
             </div>
         </div>
     </div>

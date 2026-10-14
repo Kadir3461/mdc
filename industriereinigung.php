@@ -23,7 +23,7 @@ include 'includes/header.php';
                 </a>
                 <a href="tel:+4989XXXXXXXX" class="btn btn-white btn-lg">
                     <i class="fas fa-phone"></i>
-                    +49 89 XXX XXXX
+                    +49 1516 7664588
                 </a>
             </div>
         </div>
@@ -51,7 +51,7 @@ include 'includes/header.php';
                 <ul style="list-style: none; padding: 0;">
                     <li style="padding: 0.5rem 0; display: flex; gap: 0.75rem;">
                         <i class="fas fa-check-circle" style="color: var(--primary-color); margin-top: 0.25rem;"></i>
-                        <span>Über 20 Jahre Erfahrung in der Industriereinigung</span>
+                        <span>Über 10 Jahre Erfahrung in der Industriereinigung</span>
                     </li>
                     <li style="padding: 0.5rem 0; display: flex; gap: 0.75rem;">
                         <i class="fas fa-check-circle" style="color: var(--primary-color); margin-top: 0.25rem;"></i>
@@ -265,7 +265,7 @@ include 'includes/header.php';
                         </div>
                         <div>
                             <strong>Telefon</strong><br>
-                            <a href="tel:+4989XXXXXXXX">+49 89 XXX XXXX</a>
+                            <a href="tel:+4989XXXXXXXX">+49 1516 7664588</a>
                         </div>
                     </div>
                     <div style="display: flex; gap: 1rem; margin-bottom: var(--spacing-md); align-items: center;">

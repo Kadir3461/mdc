@@ -109,6 +109,61 @@ include 'includes/header.php';
                 </p>
                 <a href="/leistungen.php#bauendreinigung" class="btn btn-outline">Mehr erfahren →</a>
             </div>
+
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3>Hausmeisterservice</h3>
+                <p>
+                    Verlässliche kleine Reparaturen, Wartungen und Pflegearbeiten für Wohn- und Geschäftsgebäude.
+                </p>
+                <a href="/leistungen.php#hausmeisterservice" class="btn btn-outline">Mehr erfahren →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-snowflake"></i>
+                </div>
+                <h3>Winterdienst</h3>
+                <p>
+                    Sichern Sie Zugänge, Wege und Parkflächen mit professionellem Winterdienst und Streuung.
+                </p>
+                <a href="/leistungen.php#winterdienst" class="btn btn-outline">Mehr erfahren →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Grünanlagenservice</h3>
+                <p>
+                    Pflege von Grünflächen, Rasen und Außenanlagen für ein gepflegtes Gesamtbild Ihres Objekts.
+                </p>
+                <a href="/leistungen.php#gruenanlagenservice" class="btn btn-outline">Mehr erfahren →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-truck-moving"></i>
+                </div>
+                <h3>Umzug &amp; Entsorgung</h3>
+                <p>
+                    Ordnungsgemäßer Rückbau, Transport und fachgerechte Entsorgung bei Renovierungen und Umzügen.
+                </p>
+                <a href="/leistungen.php#umzug-entsorgung" class="btn btn-outline">Mehr erfahren →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-square-parking"></i>
+                </div>
+                <h3>Tiefgaragenreinigung</h3>
+                <p>
+                    Intensive Reinigung von Tiefgaragenflächen, Fahrspuren und Technikbereichen für Sauberkeit und Sicherheit.
+                </p>
+                <a href="/leistungen.php#tiefgaragenreinigung" class="btn btn-outline">Mehr erfahren →</a>
+            </div>
         </div>
     </div>
 </section>
@@ -129,15 +184,7 @@ include 'includes/header.php';
                 <h4>Über 10 Jahre Erfahrung</h4>
                 <p>Langjährige Expertise in der professionellen Reinigungsbranche</p>
             </div>
-            
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h4>Zertifizierte Qualität</h4>
-                <p>Geprüfte Qualitätsstandards und regelmäßige Schulungen</p>
-            </div>
-            
+                
             <div class="card">
                 <div class="card-icon">
                     <i class="fas fa-users"></i>
@@ -306,7 +353,7 @@ include 'includes/header.php';
             </a>
             <a href="tel:+4989XXXXXXXX" class="btn btn-outline btn-lg" style="border-color: white; color: white;">
                 <i class="fas fa-phone"></i>
-                +49 89 XXX XXXX
+                +49 1516 7664588
             </a>
         </div>
     </div>
@@ -338,6 +385,28 @@ include 'includes/header.php';
                 <i class="fas fa-map-marker-alt" style="color: var(--primary-color);"></i>
                 <strong>MDC Facility & Cleaning</strong> | Rosa-Kempf-Str. 23, 81248 München
             </p>
+        </div>
+    </div>
+</section>
+
+<section class="home-badge-section">
+    <div class="container">
+        <div class="home-badge-grid">
+            <div class="home-badge-card home-badge-card--secondary">
+                <div class="home-badge-icon home-badge-icon--image" aria-label="Handwerkskammer Bayern Logo">
+                    <img src="/uploads/images/Handwerkskammer Logo München und Oberbayern.png" alt="Handwerkskammer Bayern Logo" class="home-badge-image">
+                </div>
+
+                <div class="home-badge-content">
+                    <p>
+                        Qualitätsbewusstes Handwerk mit<br>
+                        Verlässlichkeit, Kompetenz und<br>
+                        professioneller Betreuung für Ihre<br>
+                        Anforderungen im Gebäudemanagement<br>
+                        und Facility-Service.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </section>

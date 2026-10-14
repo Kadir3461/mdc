@@ -16,6 +16,7 @@ define('DB_CHARSET', 'utf8mb4');
 // Sitzungskonfiguration
 ini_set('session.cookie_httponly', 1);
 ini_set('session.use_only_cookies', 1);
+ini_set('session.use_strict_mode', 1);
 ini_set('session.cookie_secure', 0); // Auf 1 setzen bei HTTPS
 ini_set('session.cookie_samesite', 'Lax');
 
@@ -23,9 +24,13 @@ ini_set('session.cookie_samesite', 'Lax');
 date_default_timezone_set('Europe/Berlin');
 
 // E-Mail-Konfiguration
-define('CONTACT_EMAIL', 'Info@mdc-fm.de');
+define('CONTACT_EMAIL', getenv('CONTACT_EMAIL') ?: 'kaya.kadir@gmx.de');
+define('MAIL_FROM', getenv('SMTP_USER') ?: 'noreply@mdc-fm.de');
 define('SITE_NAME', 'MDC Facility & Cleaning');
-define('SITE_URL', 'http://localhost'); // Ändern zur tatsächlichen URL
+
+$siteHost = $_SERVER['HTTP_HOST'] ?? 'www.mdc-fm.de';
+$siteProtocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || ($_SERVER['SERVER_PORT'] ?? 80) == 443 ? 'https' : 'http';
+define('SITE_URL', getenv('SITE_URL') ?: $siteProtocol . '://' . $siteHost);
 
 // Upload-Konfiguration
 define('MAX_FILE_SIZE', 10485760); // 10MB in Bytes
@@ -153,9 +158,14 @@ function e($string) {
  * @return string
  */
 function generateCSRFToken() {
-    if (!isset($_SESSION['csrf_token'])) {
+    if (session_status() === PHP_SESSION_NONE) {
+        startSecureSession();
+    }
+
+    if (!isset($_SESSION['csrf_token']) || !is_string($_SESSION['csrf_token']) || $_SESSION['csrf_token'] === '') {
         $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
     }
+
     return $_SESSION['csrf_token'];
 }
 
@@ -166,7 +176,11 @@ function generateCSRFToken() {
  * @return bool
  */
 function validateCSRFToken($token) {
-    return isset($_SESSION['csrf_token']) && hash_equals($_SESSION['csrf_token'], $token);
+    if (!is_string($token) || !isset($_SESSION['csrf_token']) || !is_string($_SESSION['csrf_token'])) {
+        return false;
+    }
+
+    return hash_equals($_SESSION['csrf_token'], $token);
 }
 
 // Session starten

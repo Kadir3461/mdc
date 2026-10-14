@@ -180,7 +180,7 @@ Empfehlung: Verwenden Sie PHPMailer für bessere E-Mail-Zustellung.
 ```
 
 **Kontaktdaten:**
-- Suchen Sie nach "+49 89 XXX XXXX" und ersetzen Sie durch Ihre Telefonnummer
+- Suchen Sie nach "+49 1516 7664588" und ersetzen Sie durch Ihre Telefonnummer
 - Suchen Sie nach "Info@mdc-fm.de" und ersetzen Sie durch Ihre E-Mail
 
 ## 📁 Struktur
@@ -401,7 +401,7 @@ tar -czf backup_files_$(date +%Y%m%d).tar.gz /pfad/zur/website/
 Bei Fragen oder Problemen:
 
 - **E-Mail:** Info@mdc-fm.de
-- **Telefon:** +49 89 XXX XXXX
+- **Telefon:** +49 1516 7664588
 - **Adresse:** Rosa-Kempf-Str. 23, 81248 München
 
 ### Weiterführende Ressourcen
