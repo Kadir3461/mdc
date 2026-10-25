@@ -6,7 +6,7 @@ if (!defined('DB_HOST')) {
 $current_page = basename($_SERVER['PHP_SELF'], '.php');
 $canonical_url = rtrim(SITE_URL, '/') . ($_SERVER['REQUEST_URI'] ?? '/');
 $og_image_url = rtrim(SITE_URL, '/') . '/assets/images/MDC_Facility_Management_Logo_v2.png';
-$page_title_tag = isset($page_title) ? trim((string) $page_title) : 'MDC Facility & Cleaning';
+$page_title_tag = isset($page_title) ? trim((string) $page_title) : 'MDC Facility Management';
 $page_description_tag = isset($page_description) ? trim((string) $page_description) : 'Professionelle Reinigungsdienstleistungen in München für Büro-, Industrie- und Gebäudereinigung.';
 ?>
 <!DOCTYPE html>
@@ -17,10 +17,10 @@ $page_description_tag = isset($page_description) ? trim((string) $page_descripti
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- SEO Meta Tags -->
-    <title><?php echo e($page_title_tag); ?> | MDC Facility & Cleaning</title>
+    <title><?php echo e($page_title_tag); ?> | MDC Facility Management</title>
     <meta name="description" content="<?php echo e($page_description_tag); ?>">
     <meta name="keywords" content="Büroreinigung München, Unterhaltsreinigung München, Fensterreinigung München, Shopreinigung München, Treppenhausreinigung München, Bauendreinigung München, Fassadenreinigung München, Glasreinigung München, Photovoltaikreinigung München, Reinigungsfirma München, Facility Management München">
-    <meta name="author" content="MDC Facility & Cleaning">
+    <meta name="author" content="MDC Facility Management">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="theme-color" content="#0a5dbb">
     <link rel="canonical" href="<?php echo e($canonical_url); ?>">
@@ -29,7 +29,7 @@ $page_description_tag = isset($page_description) ? trim((string) $page_descripti
     <link rel="sitemap" type="application/xml" title="Sitemap" href="<?php echo rtrim(SITE_URL, '/'); ?>/sitemap.xml">
 
     <!-- Open Graph Tags -->
-    <meta property="og:title" content="<?php echo e($page_title_tag); ?> | MDC Facility & Cleaning">
+    <meta property="og:title" content="<?php echo e($page_title_tag); ?> | MDC Facility Management">
     <meta property="og:description" content="<?php echo e($page_description_tag); ?>">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?php echo e($canonical_url); ?>">
@@ -37,13 +37,13 @@ $page_description_tag = isset($page_description) ? trim((string) $page_descripti
     <meta property="og:image:secure_url" content="<?php echo e($og_image_url); ?>">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="MDC Facility & Cleaning Logo">
-    <meta property="og:site_name" content="MDC Facility & Cleaning">
+    <meta property="og:image:alt" content="MDC Facility Management Logo">
+    <meta property="og:site_name" content="MDC Facility Management">
     <meta property="og:locale" content="de_DE">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<?php echo e($page_title_tag); ?> | MDC Facility & Cleaning">
+    <meta name="twitter:title" content="<?php echo e($page_title_tag); ?> | MDC Facility Management">
     <meta name="twitter:description" content="<?php echo e($page_description_tag); ?>">
     <meta name="twitter:image" content="<?php echo e($og_image_url); ?>">
 
@@ -52,7 +52,7 @@ $page_description_tag = isset($page_description) ? trim((string) $page_descripti
     {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
-        "name": "MDC Facility & Cleaning",
+        "name": "MDC Facility Management",
         "image": "<?php echo rtrim(SITE_URL, '/'); ?>/assets/images/MDC_Facility_Management_Logo_v2.png",
         "description": "Professionelle Büroreinigung, Unterhaltsreinigung, Fensterreinigung, Treppenhausreinigung und weitere Reinigungsdienstleistungen in München.",
         "address": {
@@ -62,7 +62,8 @@ $page_description_tag = isset($page_description) ? trim((string) $page_descripti
             "postalCode": "81248",
             "addressCountry": "DE"
         },
-        "telephone": "+49 1516 7664588",
+        "telephone": "+49 89 38043537",
+        "faxNumber": "+49 89 38043538",
         "email": "Info@mdc-fm.de",
         "url": "<?php echo rtrim(SITE_URL, '/'); ?>",
         "priceRange": "€€",
@@ -100,9 +101,9 @@ $page_description_tag = isset($page_description) ? trim((string) $page_descripti
             <div class="container">
                 <div class="header-top-content">
                     <div class="contact-info">
-                        <a href="tel:+4989XXXXXXXX" class="contact-item">
+                        <a href="tel:+498938043537" class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>+49 1516 7664588</span>
+                            <span>+49 89 38043537</span>
                         </a>
                         <a href="mailto:Info@mdc-fm.de" class="contact-item">
                             <i class="fas fa-envelope"></i>
@@ -128,8 +129,8 @@ $page_description_tag = isset($page_description) ? trim((string) $page_descripti
         <div class="header-main">
             <div class="container">
                 <nav class="main-nav">
-                    <a href="/" class="logo" aria-label="Startseite" style="display: none;">
-                        <img src="/uploads/images/MDC%20Facility%20Management%20Logo%20v2.png" alt="MDC Facility & Cleaning Logo" style="height: 100%; width: 100;">
+                    <a href="/" class="logo" aria-label="Startseite">
+                        <img src="/uploads/images/MDC%20Facility%20Management%20Logo%20web%20used.png" alt="MDC Facility &amp; Cleaning Logo">
                     </a>
                     
                     <button class="mobile-menu-toggle" aria-label="Menü öffnen">

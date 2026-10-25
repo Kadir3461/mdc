@@ -21,9 +21,9 @@ include 'includes/header.php';
                     <i class="fas fa-file-invoice"></i>
                     Kostenloses Angebot anfragen
                 </a>
-                <a href="tel:+4989XXXXXXXX" class="btn btn-white btn-lg">
+                <a href="tel:+498938043537" class="btn btn-white btn-lg">
                     <i class="fas fa-phone"></i>
-                    +49 1516 7664588
+                    +49 89 38043537
                 </a>
             </div>
         </div>
@@ -39,7 +39,7 @@ include 'includes/header.php';
                 <h2>Sauberkeit für Ihre Produktion</h2>
                 <p>
                     In der Industrie sind Sauberkeit und Hygiene nicht nur eine Frage der Optik, sondern auch der 
-                    Sicherheit, Produktivität und Qualität. MDC Facility & Cleaning bietet Ihnen professionelle 
+                    Sicherheit, Produktivität und Qualität. MDC Facility Management bietet Ihnen professionelle 
                     Industriereinigung in München und Umgebung – maßgeschneidert auf die speziellen Anforderungen 
                     Ihres Betriebs.
                 </p>
@@ -265,7 +265,7 @@ include 'includes/header.php';
                         </div>
                         <div>
                             <strong>Telefon</strong><br>
-                            <a href="tel:+4989XXXXXXXX">+49 1516 7664588</a>
+                            <a href="tel:+498938043537">+49 89 38043537</a>
                         </div>
                     </div>
                     <div style="display: flex; gap: 1rem; margin-bottom: var(--spacing-md); align-items: center;">
@@ -292,7 +292,7 @@ include 'includes/header.php';
             </div>
             
             <div class="contact-form-section">
-                <form id="contactForm" method="POST" action="/api/contact.php">
+                <form id="contactForm" method="POST" action="/kontakt.php#angebot">
                     <input type="hidden" name="service_type" value="Industriereinigung">
                     <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
                     

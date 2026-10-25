@@ -24,7 +24,7 @@ include 'includes/header.php';
     <div class="container">
         <h2 class="text-center">Unser Leistungsspektrum</h2>
         <p class="text-center" style="max-width: 800px; margin: 0 auto var(--spacing-2xl);">
-            Seit über 10 Jahren sind wir Ihr kompetenter Partner für alle Reinigungsdienstleistungen 
+            Seit über 8 Jahren sind wir Ihr kompetenter Partner für alle Reinigungsdienstleistungen 
             im Raum München. Ob Industrie, Gewerbe oder Wohnimmobilien – wir bieten individuelle Lösungen 
             für jeden Bereich.
         </p>
@@ -395,11 +395,11 @@ include 'includes/header.php';
 <!-- Vorteile -->
 <section class="bg-light">
     <div class="container">
-        <h2 class="text-center">Warum MDC Facility & Cleaning?</h2>
+        <h2 class="text-center">Warum MDC Facility Management?</h2>
         <div class="grid grid-4">
             <div class="card text-center">
                 <i class="fas fa-certificate" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
-                <h4>10+ Jahre Erfahrung</h4>
+                <h4>8+ Jahre Erfahrung</h4>
             </div>
             <div class="card text-center">
                 <i class="fas fa-users-cog" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
@@ -432,9 +432,9 @@ include 'includes/header.php';
                 <i class="fas fa-envelope"></i>
                 Jetzt Angebot anfragen
             </a>
-            <a href="tel:+4989XXXXXXXX" class="btn btn-outline btn-lg">
+            <a href="tel:+498938043537" class="btn btn-outline btn-lg">
                 <i class="fas fa-phone"></i>
-                +49 1516 7664588
+                +49 89 38043537
             </a>
         </div>
     </div>

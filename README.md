@@ -1,8 +1,8 @@
-# MDC Facility & Cleaning - Unternehmenswebsite
+# MDC Facility Management - Unternehmenswebsite
 
 ![MDC Logo](assets/images/logo.svg)
 
-Eine vollständige, moderne und professionelle Unternehmenswebsite für MDC Facility & Cleaning im Bereich Gebäudereinigung, Industriereinigung und Facility Management in München.
+Eine vollständige, moderne und professionelle Unternehmenswebsite für MDC Facility Management im Bereich Gebäudereinigung, Industriereinigung und Facility Management in München.
 
 ## 📋 Inhaltsverzeichnis
 
@@ -117,7 +117,7 @@ define('DB_NAME', 'mdc_cleaning');     // Ihr Datenbankname
 define('DB_USER', 'ihr_username');     // Ihr Datenbank-Benutzername
 define('DB_PASS', 'ihr_passwort');     // Ihr Datenbank-Passwort
 
-define('CONTACT_EMAIL', 'Info@mdc-fm.de');  // Ihre E-Mail-Adresse
+define('CONTACT_EMAIL', 'kontakt@mdc-facility.de');  // Ihre E-Mail-Adresse
 define('SITE_URL', 'https://www.ihre-domain.de');  // Ihre Website-URL
 ```
 
@@ -181,7 +181,7 @@ Empfehlung: Verwenden Sie PHPMailer für bessere E-Mail-Zustellung.
 
 **Kontaktdaten:**
 - Suchen Sie nach "+49 1516 7664588" und ersetzen Sie durch Ihre Telefonnummer
-- Suchen Sie nach "Info@mdc-fm.de" und ersetzen Sie durch Ihre E-Mail
+- Suchen Sie nach "kontakt@mdc-facility.de" und ersetzen Sie durch Ihre E-Mail
 
 ## 📁 Struktur
 
@@ -325,7 +325,7 @@ echo password_hash('MeinPasswort123', PASSWORD_DEFAULT);
 3. Regelmäßig Performance überwachen
 
 **Google My Business:**
-1. Profil erstellen für MDC Facility & Cleaning
+1. Profil erstellen für MDC Facility Management
 2. Adresse, Telefon, Öffnungszeiten eintragen
 3. Fotos hochladen
 4. Kundenbewertungen sammeln
@@ -400,8 +400,9 @@ tar -czf backup_files_$(date +%Y%m%d).tar.gz /pfad/zur/website/
 
 Bei Fragen oder Problemen:
 
-- **E-Mail:** Info@mdc-fm.de
-- **Telefon:** +49 1516 7664588
+- **E-Mail:** kontakt@mdc-facility.de
+- **Telefon:** +49 89 38043537
+- **Fax:** +49 89 38043538
 - **Adresse:** Rosa-Kempf-Str. 23, 81248 München
 
 ### Weiterführende Ressourcen
@@ -413,9 +414,9 @@ Bei Fragen oder Problemen:
 
 ## 📄 Lizenz
 
-© 2026 MDC Facility & Cleaning. Alle Rechte vorbehalten.
+© 2026 MDC Facility Management. Alle Rechte vorbehalten.
 
-Diese Website und der Quellcode sind Eigentum von MDC Facility & Cleaning.
+Diese Website und der Quellcode sind Eigentum von MDC Facility Management.
 
 ---
 

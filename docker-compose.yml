@@ -11,7 +11,7 @@ services:
       SMTP_PORT: ${SMTP_PORT:-587}
       SMTP_USER: ${SMTP_USER:-}
       SMTP_PASS: ${SMTP_PASS:-}
-      CONTACT_EMAIL: ${CONTACT_EMAIL:-kaya.kadir@gmx.de}
+      CONTACT_EMAIL: ${CONTACT_EMAIL:-kaya.kadir3461@gmail.com}
     volumes:
       - .:/var/www/html
     depends_on:

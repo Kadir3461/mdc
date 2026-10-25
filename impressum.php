@@ -2,7 +2,7 @@
 require_once 'config/database.php';
 
 $page_title = 'Impressum';
-$page_description = 'Impressum von MDC Facility & Cleaning - Angaben gemäß § 5 TMG';
+$page_description = 'Impressum von MDC Facility Management - Angaben gemäß § 5 TMG';
 
 include 'includes/header.php';
 ?>
@@ -15,6 +15,7 @@ include 'includes/header.php';
             <h2>Angaben gemäß § 5 TMG</h2>
             <p>
                 <strong>MDC Facility &amp; Cleaning</strong><br>
+                Can Durmaz<br>
                 Rosa-Kempf-Str. 23<br>
                 81248 München<br>
                 Deutschland
@@ -22,8 +23,9 @@ include 'includes/header.php';
 
             <h2>Kontakt</h2>
             <p>
-                <strong>Telefon:</strong> +49 1516 7664588<br>
-                <strong>E-Mail:</strong> <a href="mailto:kaya.kadir@gmx.de">kaya.kadir@gmx.de</a>
+                <strong>Telefon:</strong> +49 89 38043537<br>
+                <strong>Fax:</strong> +49 89 38043538<br>
+                <strong>E-Mail:</strong> <a href="mailto:Info@mdc-fm.de">Info@mdc-fm.de</a>
             </p>
 
             <h2>Vertretungsberechtigte Person / Verantwortlich für den Inhalt</h2>

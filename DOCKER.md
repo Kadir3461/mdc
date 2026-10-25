@@ -1,4 +1,4 @@
-# MDC Facility & Cleaning - Docker Setup
+# MDC Facility Management - Docker Setup
 
 ## 🐳 Schnellstart mit Docker
 

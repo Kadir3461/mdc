@@ -2,7 +2,7 @@
 require_once 'config/database.php';
 
 $page_title = 'Startseite';
-$page_description = 'MDC Facility & Cleaning - Ihr professioneller Partner für Büroreinigung, Unterhaltsreinigung, Fensterreinigung, Shopreinigung, Treppenhausreinigung, Bauendreinigung, Fassadenreinigung, Glasreinigung und Photovoltaikreinigung in München und Umgebung. Höchste Qualität, zuverlässiger Service.';
+$page_description = 'MDC Facility Management - Ihr professioneller Partner für Büroreinigung, Unterhaltsreinigung, Fensterreinigung, Shopreinigung, Treppenhausreinigung, Bauendreinigung, Fassadenreinigung, Glasreinigung und Photovoltaikreinigung in München und Umgebung. Höchste Qualität, zuverlässiger Service.';
 
 include 'includes/header.php';
 ?>
@@ -172,7 +172,7 @@ include 'includes/header.php';
 <section class="bg-light">
     <div class="container">
         <div class="section-header">
-            <span class="section-subtitle">Warum MDC Facility & Cleaning?</span>
+            <span class="section-subtitle">Warum MDC Facility Management?</span>
             <h2 class="section-title">Ihre Vorteile auf einen Blick</h2>
         </div>
         
@@ -297,7 +297,7 @@ include 'includes/header.php';
                     <i class="fas fa-star"></i>
                 </div>
                 <p>
-                    "MDC Facility & Cleaning überzeugt durch Zuverlässigkeit und höchste Qualität. 
+                    "MDC Facility Management überzeugt durch Zuverlässigkeit und höchste Qualität. 
                     Unser Bürogebäude erstrahlt täglich in neuem Glanz. Absolute Empfehlung!"
                 </p>
                 <strong>— Michael Weber, Geschäftsführer TechPro GmbH</strong>
@@ -351,9 +351,9 @@ include 'includes/header.php';
                 <i class="fas fa-envelope"></i>
                 Jetzt Kontakt aufnehmen
             </a>
-            <a href="tel:+4989XXXXXXXX" class="btn btn-outline btn-lg" style="border-color: white; color: white;">
+            <a href="tel:+498938043537" class="btn btn-outline btn-lg" style="border-color: white; color: white;">
                 <i class="fas fa-phone"></i>
-                +49 1516 7664588
+                +49 89 38043537
             </a>
         </div>
     </div>
@@ -366,7 +366,7 @@ include 'includes/header.php';
             <!--<span class="section-subtitle">Einsatzgebiete</span>-->
             <h2 class="section-title">Wir sind in ganz München und Umgebung für Sie da</h2>
             <p class="section-description">
-                Von der Innenstadt bis zu den Außenbezirken – MDC Facility & Cleaning ist Ihr zuverlässiger Partner 
+                Von der Innenstadt bis zu den Außenbezirken – MDC Facility Management ist Ihr zuverlässiger Partner 
                 für professionelle Reinigungsdienstleistungen in München und dem Münchner Umland.
             </p>
         </div>
@@ -383,7 +383,7 @@ include 'includes/header.php';
             </iframe>
             <p style="margin-top: var(--spacing-md); color: var(--text-light);">
                 <i class="fas fa-map-marker-alt" style="color: var(--primary-color);"></i>
-                <strong>MDC Facility & Cleaning</strong> | Rosa-Kempf-Str. 23, 81248 München
+                <strong>MDC Facility Management</strong> | Rosa-Kempf-Str. 23, 81248 München
             </p>
         </div>
     </div>

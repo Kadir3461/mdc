@@ -1,6 +1,6 @@
 <?php
 /**
- * Datenbankkonfiguration für MDC Facility & Cleaning
+ * Datenbankkonfiguration für MDC Facility Management
  * 
  * WICHTIG: Ändern Sie diese Werte entsprechend Ihrer Hosting-Umgebung
  */
@@ -24,9 +24,9 @@ ini_set('session.cookie_samesite', 'Lax');
 date_default_timezone_set('Europe/Berlin');
 
 // E-Mail-Konfiguration
-define('CONTACT_EMAIL', getenv('CONTACT_EMAIL') ?: 'kaya.kadir@gmx.de');
+define('CONTACT_EMAIL', getenv('CONTACT_EMAIL') ?: 'kaya.kadir3461@gmail.com');
 define('MAIL_FROM', getenv('SMTP_USER') ?: 'noreply@mdc-fm.de');
-define('SITE_NAME', 'MDC Facility & Cleaning');
+define('SITE_NAME', 'MDC Facility Management');
 
 $siteHost = $_SERVER['HTTP_HOST'] ?? 'www.mdc-fm.de';
 $siteProtocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || ($_SERVER['SERVER_PORT'] ?? 80) == 443 ? 'https' : 'http';

@@ -2,7 +2,7 @@
 require_once 'config/database.php';
 
 $page_title = 'Datenschutzerklärung';
-$page_description = 'Datenschutzerklärung von MDC Facility & Cleaning - Informationen zum Datenschutz und zur Verarbeitung Ihrer Daten gemäß DSGVO.';
+$page_description = 'Datenschutzerklärung von MDC Facility Management - Informationen zum Datenschutz und zur Verarbeitung Ihrer Daten gemäß DSGVO.';
 
 include 'includes/header.php';
 ?>
@@ -19,12 +19,13 @@ include 'includes/header.php';
             </p>
             <p>
                 <strong>MDC Facility &amp; Cleaning</strong><br>
-                Kadir Kaya<br>
+                Can Durmaz<br>
                 Rosa-Kempf-Str. 23<br>
                 81248 München<br>
                 Deutschland<br>
-                E-Mail: <a href="mailto:kaya.kadir@gmx.de">kaya.kadir@gmx.de</a><br>
-                Telefon: +49 1516 7664588
+                E-Mail: <a href="mailto:Info@mdc-fm.de">Info@mdc-fm.de</a><br>
+                Telefon: +49 89 38043537<br>
+                Fax: +49 89 38043538
             </p>
 
             <h2>2. Datenschutz auf einen Blick</h2>
@@ -126,8 +127,9 @@ include 'includes/header.php';
                 <strong>MDC Facility &amp; Cleaning</strong><br>
                 Kadir Kaya<br>
                 Rosa-Kempf-Str. 23, 81248 München<br>
-                E-Mail: <a href="mailto:kaya.kadir@gmx.de">kaya.kadir@gmx.de</a><br>
-                Telefon: +49 1516 7664588
+                E-Mail: <a href="mailto:kaya.kadir3461@gmail.com">kaya.kadir3461@gmail.com</a><br>
+                Telefon: +49 89 38043537<br>
+                Fax: +49 89 38043538
             </p>
 
             <h2>9. Hinweis zu externen Diensten</h2>

@@ -16,7 +16,7 @@ include 'includes/header.php';
             Wir sorgen für saubere, gepflegte Immobilien und zufriedene Mieter.</p>
             <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                 <a href="#angebot" class="btn btn-primary btn-lg">Jetzt Angebot anfragen</a>
-                <a href="tel:+4989XXXXXXXX" class="btn btn-outline btn-lg">☎ +49 1516 7664588</a>
+                <a href="tel:+498938043537" class="btn btn-outline btn-lg">☎ +49 89 38043537</a>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@ include 'includes/header.php';
             <div>
                 <h2>Gebäudereinigung vom Profi</h2>
                 <p style="font-size: 1.125rem; line-height: 1.8;">
-                    Ein gepflegtes Gebäude ist die Visitenkarte jeder Immobilie. Mit über 10 Jahren Erfahrung 
+                    Ein gepflegtes Gebäude ist die Visitenkarte jeder Immobilie. Mit über 8 Jahren Erfahrung 
                     in der Gebäudereinigung sorgen wir für saubere Treppenhäuser, glänzende Eingangsbereiche 
                     und gepflegte Außenanlagen in ganz München.
                 </p>

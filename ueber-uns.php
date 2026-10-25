@@ -1,8 +1,8 @@
 <?php
 require_once 'config/database.php';
 
-$page_title = 'Über uns - MDC Facility & Cleaning';
-$page_description = 'Lernen Sie MDC Facility & Cleaning kennen - Ihr professioneller Partner für Gebäudereinigung und Facility Management in München seit über 10 Jahren.';
+$page_title = 'Über uns - MDC Facility Management';
+$page_description = 'Lernen Sie MDC Facility Management kennen - Ihr professioneller Partner für Gebäudereinigung und Facility Management in München seit über 8 Jahren.';
 
 include 'includes/header.php';
 ?>
@@ -12,7 +12,7 @@ include 'includes/header.php';
     <div class="container">
         <div class="hero-content">
             <h1>Über uns</h1>
-            <p>Ihr zuverlässiger Partner für professionelle Reinigungsdienstleistungen in München und Umgebung seit über 10 Jahren.</p>
+            <p>Ihr zuverlässiger Partner für professionelle Reinigungsdienstleistungen in München und Umgebung seit über 8 Jahren.</p>
         </div>
     </div>
 </section>
@@ -21,10 +21,10 @@ include 'includes/header.php';
 <section>
     <div class="container">
         <div>
-            <h2>MDC Facility & Cleaning</h2>
+            <h2>MDC Facility Management</h2>
             <h3 style="color: var(--primary-color); margin-bottom: var(--spacing-md);">Sauberkeit ist Vertrauenssache</h3>
             <p style="font-size: 1.125rem; line-height: 1.8;">
-                Seit über 10 Jahren steht MDC Facility & Cleaning für professionelle Reinigungsdienstleistungen 
+                Seit über 8 Jahren steht MDC Facility Management für professionelle Reinigungsdienstleistungen 
                 im Raum München. Was als kleines Familienunternehmen begann, ist heute ein etablierter Partner 
                 für Industrie, Gewerbe und Immobilienverwaltungen.
             </p>
@@ -113,40 +113,27 @@ include 'includes/header.php';
 </section>
 
 <!-- Zahlen & Fakten -->
-<section>
+<section class="bg-light">
     <div class="container">
-        <h2 class="text-center">MDC in Zahlen</h2>
+        <h2 class="text-center">Warum MDC Facility Management?</h2>
         <div class="grid grid-4">
             <div class="card text-center">
-                <div style="font-size: 3rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">
-                    15+
-                </div>
-                <h4>Jahre Erfahrung</h4>
-                <p>Seit 2009 im Reinigungsgeschäft tätig</p>
+                <i class="fas fa-certificate" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                <h4>8+ Jahre Erfahrung</h4>
             </div>
-            
             <div class="card text-center">
-                <div style="font-size: 3rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">
-                    50+
-                </div>
-                <h4>Mitarbeiter</h4>
-                <p>Professionelles und geschultes Team</p>
+                <i class="fas fa-users-cog" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                <h4>Geschultes Personal</h4>
             </div>
-            
             <div class="card text-center">
-                <div style="font-size: 3rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">
-                    200+
-                </div>
-                <h4>Zufriedene Kunden</h4>
-                <p>Vertrauen in unsere Dienstleistungen</p>
+                <i class="fas fa-shield-alt" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                <h4>Vollversichert</h4>
+                <p>Betriebs- und Berufshaftpflicht</p>
             </div>
-            
             <div class="card text-center">
-                <div style="font-size: 3rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">
-                    24/7
-                </div>
-                <h4>Notdienst</h4>
-                <p>Erreichbar, wenn Sie uns brauchen</p>
+                <i class="fas fa-clock" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                <h4>24/7 Notdienst</h4>
+                <p>Immer für Sie erreichbar</p>
             </div>
         </div>
     </div>
@@ -236,9 +223,9 @@ include 'includes/header.php';
                 <i class="fas fa-envelope"></i>
                 Jetzt Kontakt aufnehmen
             </a>
-            <a href="tel:+4989XXXXXXXX" class="btn btn-outline btn-lg">
+            <a href="tel:+498938043537" class="btn btn-outline btn-lg">
                 <i class="fas fa-phone"></i>
-                +49 1516 7664588
+                +49 89 38043537
             </a>
         </div>
     </div>

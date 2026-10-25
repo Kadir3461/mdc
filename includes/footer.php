@@ -7,12 +7,12 @@
                 <div class="footer-grid">
                     <!-- Firma -->
                     <div class="footer-col">
-                        <h3>MDC Facility & Cleaning</h3>
+                        <h3>MDC Facility Management</h3>
                         <p class="footer-description">
                             Ihr professioneller Partner für Büroreinigung, Unterhaltsreinigung, Fensterreinigung und weitere professionelle Reinigungsdienstleistungen in München und Umgebung.
                         </p>
                         <div class="footer-logo">
-                            <img src="/uploads/images/MDC%20Facility%20Management%20Logo%20v2.png" alt="MDC Facility & Cleaning" style="max-height: 120px;">
+                            <img src="/uploads/images/MDC%20Facility%20Management%20Logo%20v2.png" alt="MDC Facility Management" style="max-height: 120px;">
                         </div>
                     </div>
                     
@@ -48,7 +48,11 @@
                             </li>
                             <li>
                                 <i class="fas fa-phone"></i>
-                                <a href="tel:+4989XXXXXXXX">+49 1516 7664588</a>
+                                <a href="tel:+498938043537">+49 89 38043537</a>
+                            </li>
+                            <li>
+                                <i class="fas fa-fax"></i>
+                                <span>Fax: +49 89 38043538</span>
                             </li>
                             <li>
                                 <i class="fas fa-envelope"></i>
@@ -87,7 +91,7 @@
             <div class="container">
                 <div class="footer-bottom-content">
                     <div class="copyright">
-                        <p>&copy; <?php echo date('Y'); ?> MDC Facility & Cleaning. Alle Rechte vorbehalten.</p>
+                        <p>&copy; <?php echo date('Y'); ?> MDC Facility Management. Alle Rechte vorbehalten.</p>
                     </div>
                     <div class="footer-legal">
                         <a href="/impressum.php">Impressum</a>

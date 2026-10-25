@@ -1,4 +1,4 @@
--- MDC Facility & Cleaning - Datenbank Schema
+-- MDC Facility Management - Datenbank Schema
 -- Erstellt am: 2026-06-07
 -- Datenbank: mdc_cleaning
 

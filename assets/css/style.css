@@ -1,5 +1,5 @@
 /**
- * MDC Facility & Cleaning - Main Stylesheet
+ * MDC Facility Management - Main Stylesheet
  * Modern, Professional, Clean Design
  */
 
@@ -1096,6 +1096,147 @@ table tr:hover {
     background-color: #d1ecf1;
     color: #0c5460;
     border: 1px solid #bee5eb;
+}
+
+/* ===== Angebotskonfigurator ===== */
+[hidden] {
+    display: none !important;
+}
+
+.cfg-progress {
+    margin-bottom: var(--spacing-md);
+}
+
+.cfg-progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.cfg-progress-bar {
+    height: 8px;
+    background-color: var(--border-color);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.cfg-progress-bar > div {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 999px;
+    transition: width 0.3s ease;
+}
+
+.cfg-heading {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.cfg-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.5rem;
+}
+
+.cfg-option {
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+}
+
+.cfg-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cfg-option span {
+    display: block;
+    padding: 0.75rem 0.875rem;
+    text-align: center;
+    font-size: 0.9375rem;
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.cfg-option:hover span {
+    border-color: var(--primary-color);
+}
+
+.cfg-option input:checked + span {
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+}
+
+.cfg-option input:focus-visible + span {
+    box-shadow: 0 0 0 3px rgba(42, 125, 225, 0.3);
+}
+
+.cfg-range {
+    width: 100%;
+    margin-top: 0.75rem;
+    accent-color: var(--primary-color);
+}
+
+.cfg-quick {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.cfg-chip {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    font-family: var(--font-primary);
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.cfg-chip:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.cfg-summary {
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: var(--bg-white);
+    border-left: 4px solid var(--primary-color);
+    border-radius: var(--radius-md);
+}
+
+.cfg-summary ul {
+    margin: 0.5rem 0 0;
+    padding-left: 1.25rem;
+}
+
+.cfg-actions {
+    display: flex;
+    gap: var(--spacing-sm, 1rem);
+    margin-top: var(--spacing-md);
+}
+
+.cfg-actions .btn-primary {
+    flex: 1;
+}
+
+.form-control.error {
+    border-color: #dc3545;
 }
 
 /* ===== Loading Spinner ===== */

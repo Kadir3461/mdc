@@ -1,5 +1,5 @@
 /**
- * MDC Facility & Cleaning - Main JavaScript
+ * MDC Facility Management - Main JavaScript
  */
 
 // ===== Mobile Menu Toggle =====
@@ -146,37 +146,9 @@ function validateContactForm(form) {
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        if (validateContactForm(this)) {
-            const formData = new FormData(this);
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wird gesendet...';
-            
-            fetch('/api/contact.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    showMessage('Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.', 'success');
-                    this.reset();
-                } else {
-                    showMessage(data.message || 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.', 'error');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                showMessage('Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.', 'error');
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
-            });
+        // Validierung im Browser; der Versand erfolgt per normalem POST an kontakt.php
+        if (!validateContactForm(this)) {
+            e.preventDefault();
         }
     });
 }
@@ -424,6 +396,6 @@ function initTooltips() {
 initTooltips();
 
 // ===== Console Welcome Message =====
-console.log('%cMDC Facility & Cleaning', 'font-size: 24px; font-weight: bold; color: #0066CC;');
+console.log('%cMDC Facility Management', 'font-size: 24px; font-weight: bold; color: #0066CC;');
 console.log('%cProfessionelle Gebäudereinigung in München', 'font-size: 14px; color: #666;');
 console.log('Website developed with modern web technologies');
