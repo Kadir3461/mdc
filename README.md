@@ -229,13 +229,13 @@ MD_Reinigung/
 ### Demo-Zugänge (nach Installation verfügbar)
 
 **Admin-Account:**
-- E-Mail: `admin@mdc-fm.de`
-- Passwort: `Admin123!`
+- E-Mail: `admin@mdc-facility.de`
+- Passwort: wird beim Setup individuell vergeben (siehe database.sql)
 - Rolle: Administrator
 
 **Kunden-Account:**
 - E-Mail: `kunde@beispiel.de`
-- Passwort: `Kunde123!`
+- Passwort: wird beim Setup individuell vergeben (Konto standardmaessig inaktiv)
 - Rolle: Kunde
 
 ### Neue Benutzer anlegen

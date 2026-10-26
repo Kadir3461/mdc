@@ -1,5 +1,8 @@
 <?php
 require_once 'config/database.php';
+require_once 'includes/mail.php';
+require_once 'includes/spamschutz.php';
+require_once 'includes/consent.php';
 
 $page_title = 'Kontakt';
 $page_description = 'Kontaktieren Sie MDC Facility Management für professionelle Reinigungslösungen in München. Kostenloses Angebot anfragen ☎ +49 89 38043537';
@@ -8,6 +11,7 @@ $success = false;
 $error = false;
 $csrfError = false;
 $validationError = false;
+$spamError = false;
 
 $serviceOptions = [
     'Büroreinigung', 'Unterhaltsreinigung', 'Fensterreinigung', 'Shopreinigung',
@@ -50,12 +54,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $messageText .= $notes !== '' ? $notes : '(keine zusätzlichen Hinweise)';
 
+    $spamCheck = mdc_spam_check([
+        'company_name'   => $companyName,
+        'contact_person' => $contactPerson,
+        'email'          => $emailRaw,
+        'phone'          => $phone,
+        'message'        => $notes,
+    ]);
+
     if (!validateCSRFToken($submittedToken)) {
         $error = true;
         $csrfError = true;
     } elseif (!$formValid) {
         $error = true;
         $validationError = true;
+    } elseif ($spamCheck['spam']) {
+        error_log('Contact form: als Spam eingestuft (' . $spamCheck['reason'] . ') - IP ' . mdc_spam_client_ip());
+
+        if ($spamCheck['silent']) {
+            // Bots sollen keinen Unterschied erkennen
+            $success = true;
+        } else {
+            $error = true;
+            $spamError = true;
+        }
     } else {
         $db = getDB();
         
@@ -77,51 +99,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SERVER['HTTP_USER_AGENT'] ?? ''
             ]);
             
-            // E-Mail senden
-            $to = CONTACT_EMAIL;
-            $subject = 'Neue Kontaktanfrage (' . $serviceType . ') von ' . preg_replace('/[\r\n]+/', ' ', ($companyName ?: $contactPerson));
-            $subject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
-            $replyTo = $email;
-            $message = "Neue Kontaktanfrage über die Website:\n\n";
-            $message .= "Firma: " . ($companyName ?: '-') . "\n";
-            $message .= "Ansprechpartner: " . $contactPerson . "\n";
-            $message .= "E-Mail: " . $email . "\n";
-            $message .= "Telefon: " . ($phone ?: '-') . "\n";
-            $message .= "Gewünschte Leistung: " . $serviceType . "\n\n";
-            $message .= "Nachricht:\n" . $messageText . "\n";
-            
-            $headers = "From: " . MAIL_FROM . "\r\n";
-            if ($replyTo) {
-                $headers .= "Reply-To: " . $replyTo . "\r\n";
+            // E-Mail an das MDC-Team
+            $mailData = [
+                'company_name'   => $companyName,
+                'contact_person' => $contactPerson,
+                'email'          => $email,
+                'phone'          => $phone,
+                'service_type'   => $serviceType,
+                'area'           => $area ?: 0,
+                'rhythm'         => $rhythm,
+                'notes'          => $notes,
+            ];
+
+            if (!mdc_send_team_notification($mailData)) {
+                error_log('Contact form: Benachrichtigung an das Team fehlgeschlagen');
             }
-            $headers .= "MIME-Version: 1.0\r\n";
-            $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-            
-            if (!mail($to, $subject, $message, $headers)) {
-                error_log('Contact form: mail() fehlgeschlagen');
-            }
-            
-            // Automatische Bestätigung an den Kunden
-            if ($replyTo) {
-                $confirmSubject = '=?UTF-8?B?' . base64_encode('Ihre Anfrage bei MDC Facility Management') . '?=';
-                $confirmMessage = "Sehr geehrte Damen und Herren,\n\n";
-                $confirmMessage .= "herzlichen Dank für Ihre Anfrage und Ihr Interesse an unseren Dienstleistungen.\n\n";
-                $confirmMessage .= "Wir haben Ihre Nachricht erhalten und werden Ihr Anliegen schnellstmöglich prüfen.\n\n";
-                $confirmMessage .= "Wir melden uns in Kürze bei Ihnen zurück.\n\n";
-                $confirmMessage .= "Mit freundlichen Grüßen\n";
-                $confirmMessage .= "Ihr Team von MDC Facility Management\n";
-                
-                $confirmHeaders = "From: =?UTF-8?B?" . base64_encode('MDC Facility Management') . "?= <" . MAIL_FROM . ">\r\n";
-                $confirmHeaders .= "Reply-To: " . trim(explode(',', CONTACT_EMAIL)[0]) . "\r\n";
-                $confirmHeaders .= "MIME-Version: 1.0\r\n";
-                $confirmHeaders .= "Content-Type: text/plain; charset=UTF-8\r\n";
-                
-                if (!mail($replyTo, $confirmSubject, $confirmMessage, $confirmHeaders)) {
-                    error_log('Contact form: Bestätigungsmail fehlgeschlagen');
-                }
+
+            // Automatische Bestätigung ("Danke-Mail") an den Kunden
+            if (!mdc_send_customer_confirmation($mailData)) {
+                error_log('Contact form: Bestätigungsmail an den Kunden fehlgeschlagen');
             }
             
             $success = true;
+            mdc_spam_reset_form();
         } catch (Exception $e) {
             $error = true;
             error_log("Contact form error: " . $e->getMessage());
@@ -129,11 +129,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+mdc_spam_start_form();
+
 include 'includes/header.php';
 ?>
 
 <!-- Hero Section -->
-<section class="hero" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070'); min-height: 400px;">
+<section class="hero" style="background-image: url('/assets/images/content/kontakt-reinigungsfirma-muenchen.jpg'); min-height: 400px;">
     <div class="container">
         <div class="hero-content">
             <h1>Kontakt</h1>
@@ -245,6 +247,8 @@ include 'includes/header.php';
                             Ihre Sitzung ist abgelaufen. Bitte aktualisieren Sie die Seite und senden Sie das Formular erneut.
                         <?php elseif ($validationError): ?>
                             Bitte prüfen Sie Ihre Angaben: Ansprechpartner, eine gültige E-Mail-Adresse und die Zustimmung zur Datenschutzerklärung sind erforderlich.
+                        <?php elseif ($spamError): ?>
+                            Wir haben bereits mehrere Anfragen von Ihnen erhalten. Bitte warten Sie einen Moment oder rufen Sie uns direkt unter +49 89 38043537 an.
                         <?php else: ?>
                             Ihre Nachricht konnte nicht versendet werden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns telefonisch.
                         <?php endif; ?>
@@ -254,6 +258,7 @@ include 'includes/header.php';
                 <?php if (!$success): ?>
                 <form id="configForm" method="POST" action="/kontakt.php#angebot" novalidate data-start-step="<?php echo $error && !$csrfError ? '2' : '1'; ?>">
                     <input type="hidden" name="csrf_token" value="<?php echo e(generateCSRFToken()); ?>">
+                    <?php echo mdc_spam_honeypot_html(); ?>
                     
                     <div class="cfg-progress">
                         <div class="cfg-progress-label">
@@ -394,15 +399,7 @@ include 'includes/header.php';
     <div class="container">
         <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">So finden Sie uns</h2>
         <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg);">
-            <iframe 
-                src="https://maps.google.com/maps?q=Rosa-Kempf-Str.+23,+81248+München&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                width="100%" 
-                height="450" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+            <?php mdc_consent_map(450); ?>
         </div>
     </div>
 </section>

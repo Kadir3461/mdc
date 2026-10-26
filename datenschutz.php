@@ -87,24 +87,54 @@ include 'includes/header.php';
                 notwendige Dienstleister kommen. Diese verarbeiten die Daten ausschließlich im Auftrag und nach unseren Weisungen.
             </p>
 
-            <h2>5. Cookies und technisch notwendige Sitzungen</h2>
+            <h2>5. Cookies und Einwilligungsverwaltung</h2>
             <p>
-                Unsere Website verwendet technisch notwendige Sitzungscookies, um sicherheitsrelevante Funktionen wie die CSRF-Sicherung und die Sessionverwaltung
-                umzusetzen. Diese Cookies dienen ausschließlich dem Zweck der sicheren Nutzung der Website und sind nicht zu Werbezwecken vorgesehen.
+                Unsere Website setzt ausschließlich technisch notwendige Cookies ein. Dazu gehören das Sitzungscookie (<code>PHPSESSID</code>) für die
+                Sessionverwaltung, den Login-Bereich, die CSRF-Sicherung und den Spam-Schutz des Kontaktformulars sowie das Cookie <code>mdc_consent</code>,
+                in dem Ihre Datenschutz-Auswahl für rund sechs Monate gespeichert wird. Rechtsgrundlage ist § 25 Abs. 2 Nr. 2 TDDDG in Verbindung mit
+                Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren, funktionsfähigen Webauftritt).
             </p>
             <p>
-                Wenn in Zukunft zusätzliche Cookies oder Analyse-Tools eingesetzt werden, werden diese separat in einer Cookie-Information und mit entsprechender
-                Einwilligung dokumentiert.
+                Tracking-, Analyse- oder Werbe-Cookies setzen wir nicht ein. Es findet kein Profiling und keine automatisierte Entscheidungsfindung statt.
+            </p>
+            <p>
+                Ihre Auswahl können Sie jederzeit mit Wirkung für die Zukunft ändern oder widerrufen:
+                <a href="#" data-consent-action="open">Datenschutz-Einstellungen öffnen</a>.
             </p>
 
-            <h2>6. Speicherdauer</h2>
+            <h2>6. Externe Inhalte – Google Maps</h2>
+            <p>
+                Auf der Startseite und der Kontaktseite bieten wir eine Kartendarstellung von Google Maps an, einem Dienst der Google Ireland Limited,
+                Gordon House, Barrow Street, Dublin 4, Irland.
+            </p>
+            <p>
+                Die Karte wird <strong>nicht automatisch geladen</strong>. Sie sehen zunächst nur einen lokal gespeicherten Platzhalter; dabei werden keine
+                Daten an Google übertragen. Erst wenn Sie aktiv auf „Karte laden“ klicken oder Google Maps in den Datenschutz-Einstellungen aktivieren,
+                wird eine Verbindung zu Google hergestellt. Dabei werden Ihre IP-Adresse, Angaben zu Browser und Gerät sowie das Datum des Zugriffs an
+                Google übermittelt; eine Übermittlung in die USA kann nicht ausgeschlossen werden.
+            </p>
+            <p>
+                Rechtsgrundlage ist Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Sie können die Einwilligung jederzeit über die
+                <a href="#" data-consent-action="open">Datenschutz-Einstellungen</a> widerrufen; die Rechtmäßigkeit der bis dahin erfolgten Verarbeitung
+                bleibt davon unberührt. Weitere Informationen finden Sie in der Datenschutzerklärung von Google:
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.
+            </p>
+
+            <h2>7. Schriften, Symbole und Bilder</h2>
+            <p>
+                Alle auf dieser Website verwendeten Schriftarten (Inter, Poppins), Symbole (Font Awesome) und Bilder werden ausschließlich von unserem eigenen
+                Server ausgeliefert. Es besteht dadurch keine Verbindung zu Google Fonts, Content-Delivery-Netzwerken oder anderen Drittanbietern, und es
+                werden keine Daten an solche Anbieter übertragen.
+            </p>
+
+            <h2>8. Speicherdauer</h2>
             <p>
                 Wir speichern Ihre personenbezogenen Daten nur so lange, wie es für den jeweiligen Zweck erforderlich ist oder eine gesetzliche Aufbewahrungspflicht
                 besteht. Kontaktanfragen werden in der Regel nach Abschluss der Bearbeitung und Ablauf der gesetzlichen Aufbewahrungsfristen gelöscht, soweit keine
                 weitergehenden rechtlichen Anforderungen bestehen.
             </p>
 
-            <h2>7. Ihre Rechte</h2>
+            <h2>9. Ihre Rechte</h2>
             <p>Sie haben gemäß der DSGVO folgende Rechte:</p>
             <ul>
                 <li>Recht auf Auskunft über die zu Ihrer Person gespeicherten Daten (Art. 15 DSGVO)</li>
@@ -119,7 +149,7 @@ include 'includes/header.php';
                 Wenn Sie eines dieser Rechte ausüben möchten, kontaktieren Sie uns bitte über die oben angegebene E-Mail-Adresse.
             </p>
 
-            <h2>8. Kontakt zum Datenschutz</h2>
+            <h2>10. Kontakt zum Datenschutz</h2>
             <p>
                 Bei Fragen zum Datenschutz oder zur Verarbeitung Ihrer personenbezogenen Daten können Sie sich gerne an uns wenden:
             </p>
@@ -127,21 +157,14 @@ include 'includes/header.php';
                 <strong>MDC Facility &amp; Cleaning</strong><br>
                 Kadir Kaya<br>
                 Rosa-Kempf-Str. 23, 81248 München<br>
-                E-Mail: <a href="mailto:kaya.kadir3461@gmail.com">kaya.kadir3461@gmail.com</a><br>
+                E-Mail: <a href="mailto:Info@mdc-fm.de">Info@mdc-fm.de</a><br>
                 Telefon: +49 89 38043537<br>
                 Fax: +49 89 38043538
             </p>
 
-            <h2>9. Hinweis zu externen Diensten</h2>
-            <p>
-                Diese Website kann externe Inhalte oder Karten-Dienste einbinden. Dabei können auch personenbezogene Daten an den jeweiligen Anbieter übertragen werden.
-                Die Nutzung solcher Drittanbieter unterliegt deren eigenen Datenschutzbestimmungen. Wir prüfen die eingesetzten Dienste und bemühen uns um eine datenschutzgerechte Implementierung.
-            </p>
-
             <div style="margin-top: var(--spacing-2xl); padding: var(--spacing-md); background-color: var(--bg-light); border-radius: var(--radius-md);">
                 <p style="margin: 0; font-size: 0.875rem;">
-                    <strong>Hinweis:</strong> Diese Datenschutzerklärung ist ein praxisnahes, konkretes Muster für die vorliegende Website.
-                    Vor Veröffentlichung sollte sie noch mit den tatsächlich genutzten Hosting- und Dienstleistern sowie den gültigen Firmendaten final geprüft werden.
+                    <strong>Stand:</strong> 26.10.2026. Bei Änderungen unserer Leistungen oder der eingesetzten Technik passen wir diese Datenschutzerklärung an.
                 </p>
             </div>
         </div>

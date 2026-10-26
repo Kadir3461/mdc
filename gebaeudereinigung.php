@@ -8,7 +8,7 @@ include 'includes/header.php';
 ?>
 
 <!-- Hero Section -->
-<section class="hero" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069'); min-height: 500px;">
+<section class="hero" style="background-image: url('/assets/images/content/gebaeudereinigung-muenchen.jpg'); min-height: 500px;">
     <div class="container">
         <div class="hero-content">
             <h1>Gebäudereinigung München</h1>
@@ -53,9 +53,9 @@ include 'includes/header.php';
                 </ul>
             </div>
             <div>
-                <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2070" 
+                <img src="/assets/images/content/unterhaltsreinigung-muenchen.jpg" 
                      alt="Gebäudereinigung München" 
-                     style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                     style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);" loading="lazy" decoding="async" width="1200" height="800">
             </div>
         </div>
     </div>
@@ -190,7 +190,7 @@ include 'includes/header.php';
             <h2 class="text-center">Jetzt Angebot anfragen</h2>
             <p class="text-center" style="margin-bottom: var(--spacing-xl);">
                 Nutzen Sie unser Kontaktformular für eine schnelle und unverbindliche Anfrage. 
-                Wir melden uns innerhalb von 24 Stunden bei Ihnen.
+                Wir melden uns so schnell wie möglich bei Ihnen.
             </p>
             
             <form id="contactForm" action="/kontakt.php#angebot" method="POST">

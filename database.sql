@@ -193,13 +193,17 @@ CREATE TABLE `activity_logs` (
 -- Beispieldaten einfügen
 -- --------------------------------------------------------
 
--- Admin-Benutzer (Passwort: Admin123!)
+-- Admin-Benutzer
+-- WICHTIG: Nach dem Import ein eigenes, starkes Passwort setzen, z. B.:
+--   php -r "echo password_hash('IhrPasswort', PASSWORD_DEFAULT);"
+--   UPDATE users SET password = '<hash>' WHERE email = 'admin@mdc-facility.de';
+-- Der folgende Platzhalter-Hash ist absichtlich ungültig und erlaubt keinen Login.
 INSERT INTO `users` (`email`, `password`, `role`, `status`) VALUES
-('admin@mdc-fm.de', '$2y$10$81cryjBXax1KtUdKraxA0uiCEZcvD5CjWiUoGENSt/sa0V71riMHO', 'admin', 'active');
+('admin@mdc-facility.de', 'BITTE-HASH-SETZEN', 'admin', 'active');
 
--- Beispiel-Kunde (Passwort: Kunde123!)
+-- Beispiel-Kunde (deaktiviert, nur als Demodatensatz)
 INSERT INTO `users` (`email`, `password`, `role`, `status`) VALUES
-('kunde@beispiel.de', '$2y$10$P6oEQnqjR339pUzaCt7wquGgnJtAwviz2Gw2cFZQtmvN2ytQZtJM2', 'customer', 'active');
+('kunde@beispiel.de', 'BITTE-HASH-SETZEN', 'customer', 'inactive');
 
 -- Profil für Beispiel-Kunde
 INSERT INTO `customer_profiles` (`user_id`, `company_name`, `contact_person`, `phone`, `street`, `postal_code`, `city`, `customer_number`) VALUES

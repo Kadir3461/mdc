@@ -1,0 +1,76 @@
+# MDC Facility Management – Apache-Konfiguration (IONOS)
+
+# ---------------------------------------------------------------
+# Standard-Startseite
+# ---------------------------------------------------------------
+DirectoryIndex index.php index.html
+
+# ---------------------------------------------------------------
+# HTTPS und www erzwingen (nur für die Live-Domain,
+# damit lokale Entwicklungsumgebungen nicht umgeleitet werden)
+# ---------------------------------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteCond %{HTTP_HOST} (^|\.)mdc-facility\.de$ [NC]
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteRule ^(.*)$ https://www.mdc-facility.de/$1 [R=301,L]
+
+    RewriteCond %{HTTP_HOST} ^mdc-facility\.de$ [NC]
+    RewriteRule ^(.*)$ https://www.mdc-facility.de/$1 [R=301,L]
+</IfModule>
+
+# ---------------------------------------------------------------
+# Vertrauliche Dateien nicht ausliefern
+# ---------------------------------------------------------------
+<FilesMatch "^\.env|\.(env|sql|md|yml|yaml|ini|sh|log|example)$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "^(Dockerfile|docker-compose\.yml|\.gitignore)$">
+    Require all denied
+</FilesMatch>
+
+RedirectMatch 404 /\.git
+
+# Interne PHP-Dateien nicht direkt aufrufbar machen
+RedirectMatch 403 ^/(includes|config)/.*\.php$
+
+Options -Indexes
+
+# ---------------------------------------------------------------
+# Sicherheits-Header
+# ---------------------------------------------------------------
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://maps.gstatic.com https://maps.googleapis.com https://*.googleusercontent.com; frame-src https://www.google.com https://maps.google.com; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'"
+</IfModule>
+
+# ---------------------------------------------------------------
+# Komprimierung
+# ---------------------------------------------------------------
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml text/javascript
+    AddOutputFilterByType DEFLATE application/javascript application/json application/xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ---------------------------------------------------------------
+# Browser-Caching für statische Dateien
+# ---------------------------------------------------------------
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresDefault "access plus 1 week"
+</IfModule>

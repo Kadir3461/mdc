@@ -5,32 +5,116 @@
  * WICHTIG: Ändern Sie diese Werte entsprechend Ihrer Hosting-Umgebung
  */
 
+/**
+ * Werte aus einer .env-Datei laden (falls vorhanden).
+ * Gesucht wird zuerst oberhalb des Webroots (Live-Server), dann im Projektverzeichnis.
+ */
+(function () {
+    $candidates = [
+        __DIR__ . '/../../.env',
+        __DIR__ . '/../.env',
+    ];
+
+    $envFile = null;
+    foreach ($candidates as $candidate) {
+        if (is_readable($candidate)) {
+            $envFile = $candidate;
+            break;
+        }
+    }
+
+    if ($envFile === null) {
+        return;
+    }
+
+    foreach (file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+        $line = trim($line);
+        if ($line === '' || $line[0] === '#' || strpos($line, '=') === false) {
+            continue;
+        }
+
+        [$key, $value] = explode('=', $line, 2);
+        $key   = trim($key);
+        $value = trim($value);
+
+        if (strlen($value) >= 2 && ($value[0] === '"' || $value[0] === "'") && substr($value, -1) === $value[0]) {
+            $value = substr($value, 1, -1);
+        }
+
+        if ($key !== '' && getenv($key) === false) {
+            putenv($key . '=' . $value);
+            $_ENV[$key] = $value;
+        }
+    }
+})();
+
+/**
+ * Konfigurationswert aus der Umgebung lesen, sonst Standardwert verwenden.
+ */
+function env_value($key, $default = null)
+{
+    $value = getenv($key);
+
+    return ($value === false || $value === '') ? $default : $value;
+}
+
 // Datenbank-Verbindungsparameter
 // Für Docker: Hostname ist der Service-Name aus docker-compose.yml
-define('DB_HOST', 'mysql');
-define('DB_NAME', 'mdc_cleaning');
-define('DB_USER', 'mdc_user');
-define('DB_PASS', 'mdc_pass123');
+define('DB_HOST', env_value('DB_HOST', 'mysql'));
+define('DB_NAME', env_value('DB_NAME', 'mdc_cleaning'));
+define('DB_USER', env_value('DB_USER', 'mdc_user'));
+define('DB_PASS', env_value('DB_PASS', 'mdc_pass123'));
+define('DB_PORT', (int) env_value('DB_PORT', 3306));
 define('DB_CHARSET', 'utf8mb4');
+
+// Umgebung: "production" auf dem Live-Server, sonst "development"
+define('APP_ENV', env_value('APP_ENV', 'development'));
+define('IS_PRODUCTION', APP_ENV === 'production');
 
 // Sitzungskonfiguration
 ini_set('session.cookie_httponly', 1);
 ini_set('session.use_only_cookies', 1);
 ini_set('session.use_strict_mode', 1);
-ini_set('session.cookie_secure', 0); // Auf 1 setzen bei HTTPS
+$isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+    || (($_SERVER['SERVER_PORT'] ?? 80) == 443)
+    || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https');
+ini_set('session.cookie_secure', $isHttps ? 1 : 0);
 ini_set('session.cookie_samesite', 'Lax');
 
 // Zeitzone
 date_default_timezone_set('Europe/Berlin');
 
 // E-Mail-Konfiguration
-define('CONTACT_EMAIL', getenv('CONTACT_EMAIL') ?: 'kaya.kadir3461@gmail.com');
-define('MAIL_FROM', getenv('SMTP_USER') ?: 'noreply@mdc-fm.de');
+// CONTACT_EMAIL: Empfänger der Kontaktanfragen (mehrere durch Komma getrennt)
+// MAIL_FROM: Absenderadresse der eigenen Domain (wichtig für SPF/Zustellbarkeit)
+define('CONTACT_EMAIL', env_value('CONTACT_EMAIL', 'Info@mdc-fm.de,kaya.kadir3461@gmail.com'));
+define('MAIL_FROM', env_value('MAIL_FROM', 'kontakt@mdc-facility.de'));
 define('SITE_NAME', 'MDC Facility Management');
 
-$siteHost = $_SERVER['HTTP_HOST'] ?? 'www.mdc-fm.de';
-$siteProtocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || ($_SERVER['SERVER_PORT'] ?? 80) == 443 ? 'https' : 'http';
-define('SITE_URL', getenv('SITE_URL') ?: $siteProtocol . '://' . $siteHost);
+// Firmendaten (u. a. für die E-Mail-Signatur)
+define('COMPANY_NAME', 'MDC Facility Management');
+define('COMPANY_STREET', 'Rosa-Kempf-Str. 23');
+define('COMPANY_CITY', '81248 München');
+define('COMPANY_PHONE', '+49 89 38043537');
+define('COMPANY_PHONE_LINK', '+498938043537');
+define('COMPANY_FAX', '+49 89 38043538');
+define('COMPANY_EMAIL', 'Info@mdc-fm.de');
+
+// Host-Header gegen eine Whitelist prüfen, damit Links in E-Mails und
+// Meta-Tags nicht auf fremde Domains umgebogen werden können
+$allowedHosts = array_filter(array_map('trim', explode(',', (string) env_value('ALLOWED_HOSTS', 'mdc-facility.de,www.mdc-facility.de,localhost,mdc.ddev.site'))));
+$requestHost  = strtolower(preg_replace('/:\d+$/', '', (string) ($_SERVER['HTTP_HOST'] ?? '')));
+
+$siteHost = 'www.mdc-facility.de';
+foreach ($allowedHosts as $allowedHost) {
+    if ($requestHost === strtolower($allowedHost)) {
+        $siteHost = $_SERVER['HTTP_HOST'];
+        break;
+    }
+}
+
+$siteProtocol = $isHttps ? 'https' : 'http';
+define('SITE_URL', env_value('SITE_URL', $siteProtocol . '://' . $siteHost));
 
 // Upload-Konfiguration
 define('MAX_FILE_SIZE', 10485760); // 10MB in Bytes
@@ -40,9 +124,28 @@ define('UPLOAD_IMAGE_PATH', __DIR__ . '/../uploads/images/');
 define('UPLOAD_DOC_PATH', __DIR__ . '/../uploads/documents/');
 define('ARCHIVE_PATH', __DIR__ . '/../archive/');
 
-// Fehlerbehandlung (für Produktion auf 0 setzen)
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// Fehlerbehandlung: im Live-Betrieb keine Details im Browser anzeigen
+if (IS_PRODUCTION) {
+    error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
+    ini_set('display_errors', '0');
+    ini_set('log_errors', '1');
+} else {
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1');
+}
+
+/**
+ * Asset-URL mit Versionsstempel (Cache-Busting).
+ * So erhalten Besucher nach einem Update sofort die neue Datei,
+ * obwohl statische Dateien lange im Browser zwischengespeichert werden.
+ */
+function asset_url($path)
+{
+    $file = __DIR__ . '/..' . $path;
+    $version = is_readable($file) ? filemtime($file) : null;
+
+    return $version ? $path . '?v=' . $version : $path;
+}
 
 /**
  * Datenbankverbindung mit PDO erstellen
@@ -54,7 +157,7 @@ function getDB() {
     
     if ($pdo === null) {
         try {
-            $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
+            $dsn = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
             $options = [
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,

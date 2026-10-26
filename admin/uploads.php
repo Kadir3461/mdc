@@ -21,9 +21,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file']) && isset($_P
             : ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'txt'];
         
         $file_extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-        
+
+        // Bei Bildern zusätzlich den tatsächlichen Dateiinhalt prüfen
+        $contentValid = true;
+        if ($file_type === 'image') {
+            $imageInfo = @getimagesize($file['tmp_name']);
+            $allowedMime = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+            $contentValid = $imageInfo !== false && in_array($imageInfo['mime'] ?? '', $allowedMime, true);
+        }
+
         if (!in_array($file_extension, $allowed_extensions)) {
             $error = "Dateityp nicht erlaubt. Erlaubt: " . implode(', ', $allowed_extensions);
+        } elseif (!$contentValid) {
+            $error = "Die Datei ist kein gültiges Bild.";
         } elseif ($file['size'] > 10 * 1024 * 1024) { // 10 MB
             $error = "Datei ist zu groß (max. 10 MB)";
         } else {
@@ -34,7 +44,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file']) && isset($_P
                     mkdir($upload_dir, 0755, true);
                 }
                 
-                $new_filename = uniqid() . '_' . basename($file['name']);
+                // Dateiname komplett neu bilden: verhindert Doppelendungen wie "shell.php.jpg"
+                $safeBase = preg_replace('/[^A-Za-z0-9_-]+/', '-', pathinfo($file['name'], PATHINFO_FILENAME));
+                $safeBase = trim(mb_substr($safeBase, 0, 60), '-');
+                $new_filename = uniqid() . ($safeBase !== '' ? '_' . $safeBase : '') . '.' . $file_extension;
                 $file_path = $upload_dir . $new_filename;
                 
                 if (move_uploaded_file($file['tmp_name'], $file_path)) {
@@ -82,7 +95,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file']) && isset($_P
                     $error = "Upload fehlgeschlagen";
                 }
             } catch (Exception $e) {
-                $error = $e->getMessage();
+                error_log("Admin-Bereich: " . $e->getMessage());
+                $error = "Die Aktion konnte nicht ausgefuehrt werden. Bitte versuchen Sie es erneut.";
             }
         }
     } else {
@@ -123,7 +137,8 @@ if (isset($_GET['delete']) && isset($_GET['type']) && isset($_GET['token'])) {
             
             $success = "Datei wurde gelöscht";
         } catch (Exception $e) {
-            $error = $e->getMessage();
+            error_log("Admin-Bereich: " . $e->getMessage());
+            $error = "Die Aktion konnte nicht ausgefuehrt werden. Bitte versuchen Sie es erneut.";
         }
     }
 }

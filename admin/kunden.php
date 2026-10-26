@@ -103,7 +103,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             if ($db->inTransaction()) {
                 $db->rollBack();
             }
-            $error = $e->getMessage();
+            error_log("Admin-Bereich: " . $e->getMessage());
+            $error = "Die Aktion konnte nicht ausgefuehrt werden. Bitte versuchen Sie es erneut.";
         }
     } else {
         $error = "CSRF-Token ungültig";
@@ -185,7 +186,7 @@ include '../includes/header.php';
                             </td>
                             <td><?php echo $customer['last_login'] ? date('d.m.Y H:i', strtotime($customer['last_login'])) : 'Nie'; ?></td>
                             <td>
-                                <button onclick='editCustomer(<?php echo json_encode($customer); ?>)' class="btn btn-sm btn-outline" title="Bearbeiten">
+                                <button onclick='editCustomer(<?php echo json_encode($customer, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>)' class="btn btn-sm btn-outline" title="Bearbeiten">
                                     <i class="fas fa-edit"></i>
                                 </button>
                                 <button onclick="deleteCustomer(<?php echo $customer['id']; ?>, '<?php echo e($customer['customer_number']); ?>')" class="btn btn-sm btn-outline" style="color: var(--error-color);" title="Löschen">

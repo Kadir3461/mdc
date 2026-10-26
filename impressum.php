@@ -2,7 +2,7 @@
 require_once 'config/database.php';
 
 $page_title = 'Impressum';
-$page_description = 'Impressum von MDC Facility Management - Angaben gemäß § 5 TMG';
+$page_description = 'Impressum von MDC Facility Management, Rosa-Kempf-Str. 23, 81248 München – Anbieterkennzeichnung und Kontaktdaten gemäß § 5 TMG.';
 
 include 'includes/header.php';
 ?>

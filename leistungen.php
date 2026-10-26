@@ -2,13 +2,13 @@
 require_once 'config/database.php';
 
 $page_title = 'Unsere Leistungen';
-$page_description = 'Professionelle Reinigungsdienstleistungen in München - Büroreinigung, Unterhaltsreinigung, Fensterreinigung, Shopreinigung, Treppenhausreinigung, Bauendreinigung, Fassadenreinigung, Glasreinigung und Photovoltaikreinigung. ☎ Jetzt anfragen!';
+$page_description = 'Alle Reinigungsleistungen in München auf einen Blick: Büro-, Unterhalts-, Fenster-, Treppenhaus- und Fassadenreinigung ☎ Jetzt Angebot anfragen!';
 
 include 'includes/header.php';
 ?>
 
 <!-- Hero Section -->
-<section class="hero" style="background-image: url('https://images.unsplash.com/photo-1527689368864-3a821dbccc34?q=80&w=2070'); min-height: 500px;">
+<section class="hero" style="background-image: url('/assets/images/content/reinigungsdienstleistungen-muenchen.jpg'); min-height: 500px;">
     <div class="container">
         <div class="hero-content">
             <h1>Unsere Leistungen</h1>
@@ -33,9 +33,9 @@ include 'includes/header.php';
             <!-- Büroreinigung -->
             <div id="bueroreinigung" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="/uploads/images/B%C3%BCroreinigung.png" 
+                    <img src="/uploads/images/B%C3%BCroreinigung.jpg" 
                          alt="Büroreinigung" 
-                         style="width: 100%; height: 250px; object-fit: cover;">
+                         style="width: 100%; height: 250px; object-fit: cover;" loading="lazy" decoding="async" width="1200" height="800">
                     <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-briefcase"></i> Büroreinigung
@@ -59,9 +59,9 @@ include 'includes/header.php';
             <!-- Unterhaltsreinigung -->
             <div id="unterhaltsreinigung" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2070" 
+                    <img src="/assets/images/content/unterhaltsreinigung-muenchen.jpg" 
                          alt="Unterhaltsreinigung" 
-                         style="width: 100%; height: 250px; object-fit: cover;">
+                         style="width: 100%; height: 250px; object-fit: cover;" loading="lazy" decoding="async" width="1200" height="800">
                     <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-broom"></i> Unterhaltsreinigung
@@ -85,9 +85,9 @@ include 'includes/header.php';
             <!-- Fensterreinigung -->
             <div id="fensterreinigung" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="/assets/images/Fensterreinigung.png" 
+                    <img src="/assets/images/Fensterreinigung.jpg" 
                          alt="Fensterreinigung" 
-                         style="width: 100%; height: 250px; object-fit: cover;">
+                         style="width: 100%; height: 250px; object-fit: cover;" loading="lazy" decoding="async" width="1200" height="967">
                     <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-window-maximize"></i> Fensterreinigung
@@ -111,9 +111,9 @@ include 'includes/header.php';
             <!-- Shopreinigung -->
             <div id="shopreinigung" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="/uploads/images/Shoppreinigung.png" 
+                    <img src="/uploads/images/Shoppreinigung.jpg" 
                          alt="Shopreinigung" 
-                         style="width: 100%; height: 250px; object-fit: cover;">
+                         style="width: 100%; height: 250px; object-fit: cover;" loading="lazy" decoding="async" width="1200" height="800">
                     <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-store"></i> Shopreinigung
@@ -137,9 +137,9 @@ include 'includes/header.php';
             <!-- Treppenhausreinigung -->
             <div id="treppenhausreinigung" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="/uploads/images/Treppenhausreinigung.png" 
+                    <img src="/uploads/images/Treppenhausreinigung.jpg" 
                          alt="Treppenhausreinigung" 
-                         style="width: 100%; height: 250px; object-fit: cover;">
+                         style="width: 100%; height: 250px; object-fit: cover;" loading="lazy" decoding="async" width="1200" height="800">
                     <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-stairs"></i> Treppenhausreinigung
@@ -163,9 +163,9 @@ include 'includes/header.php';
             <!-- Hausmeisterservice -->
             <div id="hausmeisterservice" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="/uploads/images/Hausmeisterservice.png" 
+                    <img src="/uploads/images/Hausmeisterservice.jpg" 
                          alt="Hausmeisterservice" 
-                         style="width: 100%; height: 250px; object-fit: cover;">
+                         style="width: 100%; height: 250px; object-fit: cover;" loading="lazy" decoding="async" width="1200" height="800">
                     <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-tools"></i> Hausmeisterservice
@@ -188,9 +188,9 @@ include 'includes/header.php';
             <!-- Winterdienst -->
             <div id="winterdienst" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="/uploads/images/Winterdienst.png" 
+                    <img src="/uploads/images/Winterdienst.jpg" 
                          alt="Winterdienst" 
-                         style="width: 100%; height: 250px; object-fit: cover;">
+                         style="width: 100%; height: 250px; object-fit: cover;" loading="lazy" decoding="async" width="1200" height="800">
                     <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-snowflake"></i> Winterdienst
@@ -213,9 +213,9 @@ include 'includes/header.php';
             <!-- Grünanlagenservice -->
             <div id="gruenanlagenservice" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="/uploads/images/Gr%C3%BCnanlagenservice.png" 
+                    <img src="/uploads/images/Gr%C3%BCnanlagenservice.jpg" 
                          alt="Grünanlagenservice" 
-                         style="width: 100%; height: 250px; object-fit: cover;">
+                         style="width: 100%; height: 250px; object-fit: cover;" loading="lazy" decoding="async" width="1200" height="800">
                     <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-leaf"></i> Grünanlagenservice
@@ -238,9 +238,9 @@ include 'includes/header.php';
             <!-- Umzug & Entsorgung -->
             <div id="umzug-entsorgung" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="/uploads/images/Umzug%20%26%20Entsorgung.png" 
+                    <img src="/uploads/images/Umzug%20%26%20Entsorgung.jpg" 
                          alt="Umzug & Entsorgung" 
-                         style="width: 100%; height: 250px; object-fit: cover;">
+                         style="width: 100%; height: 250px; object-fit: cover;" loading="lazy" decoding="async" width="1200" height="800">
                     <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-truck-moving"></i> Umzug &amp; Entsorgung
@@ -263,9 +263,9 @@ include 'includes/header.php';
             <!-- Tiefgaragenreinigung -->
             <div id="tiefgaragenreinigung" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="/uploads/images/Tiefgaragenreinigung.png" 
+                    <img src="/uploads/images/Tiefgaragenreinigung.jpg" 
                          alt="Tiefgaragenreinigung" 
-                         style="width: 100%; height: 250px; object-fit: cover;">
+                         style="width: 100%; height: 250px; object-fit: cover;" loading="lazy" decoding="async" width="1200" height="800">
                     <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-square-parking"></i> Tiefgaragenreinigung
@@ -288,9 +288,9 @@ include 'includes/header.php';
             <!-- Bauendreinigung -->
             <div id="bauendreinigung" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="/uploads/images/Bauendreinigung.png" 
+                    <img src="/uploads/images/Bauendreinigung.jpg" 
                          alt="Bauendreinigung" 
-                         style="width: 100%; height: 250px; object-fit: cover;">
+                         style="width: 100%; height: 250px; object-fit: cover;" loading="lazy" decoding="async" width="1200" height="800">
                     <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-hard-hat"></i> Bauendreinigung
@@ -314,9 +314,9 @@ include 'includes/header.php';
             <!-- Fassadenreinigung -->
             <div id="fassadenreinigung" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="/uploads/images/Fassadenreinigung.png" 
+                    <img src="/uploads/images/Fassadenreinigung.jpg" 
                          alt="Fassadenreinigung" 
-                         style="width: 100%; height: 250px; object-fit: cover;">
+                         style="width: 100%; height: 250px; object-fit: cover;" loading="lazy" decoding="async" width="1200" height="800">
                     <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-building"></i> Fassadenreinigung
@@ -340,9 +340,9 @@ include 'includes/header.php';
             <!-- Glasreinigung -->
             <div id="glasreinigung" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="/assets/images/Glasreinigung.png" 
+                    <img src="/assets/images/Glasreinigung.jpg" 
                          alt="Glasreinigung" 
-                         style="width: 100%; height: 250px; object-fit: cover;">
+                         style="width: 100%; height: 250px; object-fit: cover;" loading="lazy" decoding="async" width="1200" height="799">
                     <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-chess-board"></i> Glasreinigung
@@ -366,9 +366,9 @@ include 'includes/header.php';
             <!-- Photovoltaikreinigung -->
             <div id="photovoltaikreinigung" class="card" style="display: flex; flex-direction: column;">
                 <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); margin-bottom: var(--spacing-md);">
-                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2070&auto=format&fit=crop" 
+                    <img src="/assets/images/content/reinigungsteam-muenchen.jpg" 
                          alt="Photovoltaikreinigung" 
-                         style="width: 100%; height: 250px; object-fit: cover;">
+                         style="width: 100%; height: 250px; object-fit: cover;" loading="lazy" decoding="async" width="1200" height="799">
                     <div style="position: absolute; top: 1rem; left: 1rem; display: none;">
                         <span class="badge badge-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
                             <i class="fas fa-solar-panel"></i> Photovoltaikreinigung

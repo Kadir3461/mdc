@@ -3,9 +3,16 @@ if (!defined('DB_HOST')) {
     require_once __DIR__ . '/../config/database.php';
 }
 
-$current_page = basename($_SERVER['PHP_SELF'], '.php');
-$canonical_url = rtrim(SITE_URL, '/') . ($_SERVER['REQUEST_URI'] ?? '/');
-$og_image_url = rtrim(SITE_URL, '/') . '/assets/images/MDC_Facility_Management_Logo_v2.png';
+$current_page = basename($_SERVER['SCRIPT_NAME'] ?? '', '.php');
+$current_page = preg_replace('/[^a-z0-9_-]/i', '', $current_page);
+
+// Canonical ohne Query-String, damit Parameter keine Duplicate-Content-URLs erzeugen
+$requestPath = strtok($_SERVER['REQUEST_URI'] ?? '/', '?');
+if ($requestPath === '/index.php') {
+    $requestPath = '/';
+}
+$canonical_url = rtrim(SITE_URL, '/') . $requestPath;
+$og_image_url = rtrim(SITE_URL, '/') . '/assets/images/og-image.jpg';
 $page_title_tag = isset($page_title) ? trim((string) $page_title) : 'MDC Facility Management';
 $page_description_tag = isset($page_description) ? trim((string) $page_description) : 'Professionelle Reinigungsdienstleistungen in München für Büro-, Industrie- und Gebäudereinigung.';
 ?>
@@ -22,7 +29,7 @@ $page_description_tag = isset($page_description) ? trim((string) $page_descripti
     <meta name="keywords" content="Büroreinigung München, Unterhaltsreinigung München, Fensterreinigung München, Shopreinigung München, Treppenhausreinigung München, Bauendreinigung München, Fassadenreinigung München, Glasreinigung München, Photovoltaikreinigung München, Reinigungsfirma München, Facility Management München">
     <meta name="author" content="MDC Facility Management">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="theme-color" content="#0a5dbb">
+    <meta name="theme-color" content="#2A7DE1">
     <link rel="canonical" href="<?php echo e($canonical_url); ?>">
     <link rel="alternate" hreflang="de" href="<?php echo e($canonical_url); ?>">
     <link rel="alternate" hreflang="x-default" href="<?php echo e($canonical_url); ?>">
@@ -35,9 +42,10 @@ $page_description_tag = isset($page_description) ? trim((string) $page_descripti
     <meta property="og:url" content="<?php echo e($canonical_url); ?>">
     <meta property="og:image" content="<?php echo e($og_image_url); ?>">
     <meta property="og:image:secure_url" content="<?php echo e($og_image_url); ?>">
+    <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="MDC Facility Management Logo">
+    <meta property="og:image:alt" content="MDC Facility Management – Sauberkeit, Qualität, Vertrauen">
     <meta property="og:site_name" content="MDC Facility Management">
     <meta property="og:locale" content="de_DE">
 
@@ -47,53 +55,172 @@ $page_description_tag = isset($page_description) ? trim((string) $page_descripti
     <meta name="twitter:description" content="<?php echo e($page_description_tag); ?>">
     <meta name="twitter:image" content="<?php echo e($og_image_url); ?>">
 
-    <!-- Schema.org LocalBusiness Markup -->
+    <!-- Schema.org Markup -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "MDC Facility Management",
-        "image": "<?php echo rtrim(SITE_URL, '/'); ?>/assets/images/MDC_Facility_Management_Logo_v2.png",
-        "description": "Professionelle Büroreinigung, Unterhaltsreinigung, Fensterreinigung, Treppenhausreinigung und weitere Reinigungsdienstleistungen in München.",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Rosa-Kempf-Str. 23",
-            "addressLocality": "München",
-            "postalCode": "81248",
-            "addressCountry": "DE"
-        },
-        "telephone": "+49 89 38043537",
-        "faxNumber": "+49 89 38043538",
-        "email": "Info@mdc-fm.de",
-        "url": "<?php echo rtrim(SITE_URL, '/'); ?>",
-        "priceRange": "€€",
-        "areaServed": "München",
-        "openingHoursSpecification": [
-            {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                "opens": "08:00",
-                "closes": "18:00"
-            }
-        ]
+    <?php
+    $siteBase = rtrim(SITE_URL, '/');
+    $serviceList = [
+        'Büroreinigung', 'Unterhaltsreinigung', 'Fensterreinigung', 'Shopreinigung',
+        'Treppenhausreinigung', 'Bauendreinigung', 'Hausmeisterservice', 'Winterdienst',
+        'Grünanlagenservice', 'Umzug & Entsorgung', 'Tiefgaragenreinigung', 'Fassadenreinigung',
+        'Glasreinigung', 'Photovoltaikreinigung',
+    ];
+
+    $schema = [
+        '@context' => 'https://schema.org',
+        '@graph'   => [
+            [
+                '@type'       => 'Organization',
+                '@id'         => $siteBase . '/#organization',
+                'name'        => 'MDC Facility Management',
+                'url'         => $siteBase . '/',
+                'logo'        => [
+                    '@type'  => 'ImageObject',
+                    'url'    => $siteBase . '/assets/images/MDC_Facility_Management_Logo_v2.png',
+                    'width'  => 1863,
+                    'height' => 844,
+                ],
+                'image'       => $og_image_url,
+                'email'       => COMPANY_EMAIL,
+                'telephone'   => COMPANY_PHONE,
+                'faxNumber'   => COMPANY_FAX,
+                'address'     => [
+                    '@type'           => 'PostalAddress',
+                    'streetAddress'   => COMPANY_STREET,
+                    'addressLocality' => 'München',
+                    'postalCode'      => '81248',
+                    'addressRegion'   => 'Bayern',
+                    'addressCountry'  => 'DE',
+                ],
+                'contactPoint' => [
+                    '@type'             => 'ContactPoint',
+                    'telephone'         => COMPANY_PHONE,
+                    'contactType'       => 'customer service',
+                    'email'             => COMPANY_EMAIL,
+                    'areaServed'        => 'DE',
+                    'availableLanguage' => ['German'],
+                ],
+            ],
+            [
+                '@type'           => 'WebSite',
+                '@id'             => $siteBase . '/#website',
+                'url'             => $siteBase . '/',
+                'name'            => 'MDC Facility Management',
+                'inLanguage'      => 'de-DE',
+                'publisher'       => ['@id' => $siteBase . '/#organization'],
+            ],
+            [
+                '@type'       => 'WebPage',
+                '@id'         => $canonical_url . '#webpage',
+                'url'         => $canonical_url,
+                'name'        => $page_title_tag . ' | MDC Facility Management',
+                'description' => $page_description_tag,
+                'inLanguage'  => 'de-DE',
+                'isPartOf'    => ['@id' => $siteBase . '/#website'],
+                'about'       => ['@id' => $siteBase . '/#localbusiness'],
+                'primaryImageOfPage' => ['@type' => 'ImageObject', 'url' => $og_image_url],
+            ],
+            [
+                '@type'       => ['LocalBusiness', 'ProfessionalService'],
+                '@id'         => $siteBase . '/#localbusiness',
+                'name'        => 'MDC Facility Management',
+                'image'       => $siteBase . '/assets/images/MDC_Facility_Management_Logo_v2.png',
+                'logo'        => $siteBase . '/assets/images/MDC_Facility_Management_Logo_v2.png',
+                'description' => 'Professionelle Büroreinigung, Unterhaltsreinigung, Fensterreinigung, Treppenhausreinigung und weitere Reinigungsdienstleistungen in München und Umgebung.',
+                'url'         => $siteBase . '/',
+                'telephone'   => COMPANY_PHONE,
+                'faxNumber'   => COMPANY_FAX,
+                'email'       => COMPANY_EMAIL,
+                'priceRange'  => '€€',
+                'currenciesAccepted' => 'EUR',
+                'paymentAccepted'    => 'Rechnung, Überweisung',
+                'address'     => [
+                    '@type'           => 'PostalAddress',
+                    'streetAddress'   => COMPANY_STREET,
+                    'addressLocality' => 'München',
+                    'postalCode'      => '81248',
+                    'addressRegion'   => 'Bayern',
+                    'addressCountry'  => 'DE',
+                ],
+                'geo' => [
+                    '@type'     => 'GeoCoordinates',
+                    'latitude'  => 48.1518,
+                    'longitude' => 11.4603,
+                ],
+                'areaServed' => [
+                    ['@type' => 'City', 'name' => 'München'],
+                    ['@type' => 'AdministrativeArea', 'name' => 'Landkreis München'],
+                    ['@type' => 'AdministrativeArea', 'name' => 'Oberbayern'],
+                ],
+                'openingHoursSpecification' => [
+                    [
+                        '@type'     => 'OpeningHoursSpecification',
+                        'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                        'opens'     => '08:00',
+                        'closes'    => '18:00',
+                    ],
+                ],
+                'parentOrganization' => ['@id' => $siteBase . '/#organization'],
+                'hasOfferCatalog'    => [
+                    '@type'          => 'OfferCatalog',
+                    'name'           => 'Reinigungsdienstleistungen',
+                    'itemListElement' => array_map(static function ($service) {
+                        return [
+                            '@type' => 'Offer',
+                            'itemOffered' => [
+                                '@type'       => 'Service',
+                                'name'        => $service,
+                                'serviceType' => $service,
+                                'areaServed'  => ['@type' => 'City', 'name' => 'München'],
+                            ],
+                        ];
+                    }, $serviceList),
+                ],
+            ],
+        ],
+    ];
+
+    if (!empty($breadcrumbs) && is_array($breadcrumbs)) {
+        $items = [];
+        $position = 1;
+        foreach ($breadcrumbs as $label => $path) {
+            $items[] = [
+                '@type'    => 'ListItem',
+                'position' => $position++,
+                'name'     => $label,
+                'item'     => $siteBase . $path,
+            ];
+        }
+        $schema['@graph'][] = [
+            '@type'           => 'BreadcrumbList',
+            '@id'             => $canonical_url . '#breadcrumb',
+            'itemListElement' => $items,
+        ];
     }
+
+    echo json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_HEX_TAG | JSON_HEX_AMP);
+    ?>
     </script>
 
-    <!-- Favicon -->
+    <!-- Favicon & App-Icons -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon-192.png">
     <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon-180.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="apple-mobile-web-app-title" content="MDC">
+    <meta name="application-name" content="MDC Facility Management">
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="/assets/css/style.css">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Stylesheets (lokal gehostet, keine externen Anfragen) -->
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/vendor/fontawesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="<?php echo e(asset_url('/assets/fonts/fonts.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset_url('/assets/css/style.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset_url('/assets/vendor/fontawesome/all.min.css')); ?>">
 </head>
-<body class="<?php echo $current_page; ?>-page">
+<body class="<?php echo e($current_page); ?>-page">
     
     <!-- Header -->
     <header class="site-header">
@@ -130,7 +257,7 @@ $page_description_tag = isset($page_description) ? trim((string) $page_descripti
             <div class="container">
                 <nav class="main-nav">
                     <a href="/" class="logo" aria-label="Startseite">
-                        <img src="/uploads/images/MDC%20Facility%20Management%20Logo%20web%20used.png" alt="MDC Facility &amp; Cleaning Logo">
+                        <img src="/uploads/images/MDC%20Facility%20Management%20Logo%20web%20used.png" alt="MDC Facility &amp; Cleaning Logo" width="900" height="377" fetchpriority="high" decoding="async">
                     </a>
                     
                     <button class="mobile-menu-toggle" aria-label="Menü öffnen">

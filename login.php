@@ -9,11 +9,38 @@ if (isLoggedIn()) {
 
 $error = '';
 
+/**
+ * Nur interne Pfade als Weiterleitungsziel zulassen (Schutz vor Open Redirect).
+ */
+function safeRedirectTarget($target)
+{
+    $target = (string) $target;
+
+    // Steuerzeichen (u. a. Tab) wuerden von Browsern aus der URL entfernt
+    // und koennten so eine externe Adresse ergeben -> komplett ablehnen
+    if (preg_match('/[\x00-\x20\x7F]/', $target)) {
+        return '/dashboard.php';
+    }
+
+    // Keine absoluten URLs, keine protokollrelativen Pfade, keine Backslashes
+    if ($target === '' || $target[0] !== '/' || strncmp($target, '//', 2) === 0 || strpos($target, '\\') !== false) {
+        return '/dashboard.php';
+    }
+
+    if (preg_match('#^/[A-Za-z][A-Za-z0-9+.-]*:#', $target)) {
+        return '/dashboard.php';
+    }
+
+    return $target;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
-    
-    if (!empty($email) && !empty($password)) {
+
+    if (!validateCSRFToken($_POST['csrf_token'] ?? '')) {
+        $error = 'Ihre Sitzung ist abgelaufen. Bitte laden Sie die Seite neu und melden Sie sich erneut an.';
+    } elseif (!empty($email) && !empty($password)) {
         $db = getDB();
         
         try {
@@ -35,7 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 } else {
                     // Passwort prüfen
                     if (password_verify($password, $user['password'])) {
-                        // Login erfolgreich
+                        // Login erfolgreich - Session-ID erneuern (Schutz vor Session-Fixation)
+                        session_regenerate_id(true);
+
                         $_SESSION['user_id'] = $user['id'];
                         $_SESSION['user_email'] = $user['email'];
                         $_SESSION['user_role'] = $user['role'];
@@ -48,8 +77,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $stmt = $db->prepare("INSERT INTO activity_logs (user_id, action, description, ip_address, user_agent) VALUES (?, 'login', 'Benutzer hat sich eingeloggt', ?, ?)");
                         $stmt->execute([$user['id'], $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT'] ?? '']);
                         
-                        // Redirect
-                        $redirect = $_GET['redirect'] ?? '/dashboard.php';
+                        // Redirect (nur interne Ziele)
+                        $redirect = safeRedirectTarget($_GET['redirect'] ?? '/dashboard.php');
                         header('Location: ' . $redirect);
                         exit;
                     } else {
@@ -81,7 +110,7 @@ include 'includes/header.php';
         <div style="max-width: 500px; margin: 0 auto;">
             <div class="card" style="padding: var(--spacing-2xl);">
                 <div style="text-align: center; margin-bottom: var(--spacing-xl);">
-                    <img src="/uploads/images/MDC%20Facility%20Management%20Logo%20v2.png" alt="MDC Facility Management" style="max-height: 200px; height: auto; margin: 0 auto var(--spacing-md);">
+                    <img src="/uploads/images/MDC%20Facility%20Management%20Logo%20v2.png" alt="MDC Facility Management" style="max-height: 200px; height: auto; margin: 0 auto var(--spacing-md);" loading="lazy" decoding="async" width="900" height="408">
                     <h2>Willkommen zurück</h2>
                     <p style="color: var(--text-light);">Melden Sie sich in Ihrem Kundenbereich an</p>
                 </div>
@@ -93,7 +122,8 @@ include 'includes/header.php';
                     </div>
                 <?php endif; ?>
                 
-                <form method="POST" action="/login.php<?php echo isset($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : ''; ?>">
+                <form method="POST" action="/login.php<?php echo isset($_GET['redirect']) ? '?redirect=' . urlencode(safeRedirectTarget($_GET['redirect'])) : ''; ?>">
+                    <input type="hidden" name="csrf_token" value="<?php echo e(generateCSRFToken()); ?>">
                     <div class="form-group">
                         <label for="email">E-Mail-Adresse</label>
                         <input type="email" id="email" name="email" class="form-control" required autofocus
@@ -124,14 +154,6 @@ include 'includes/header.php';
                     </p>
                     <p style="color: var(--text-light); margin: 0;">
                         Noch kein Kunde? <a href="/kontakt.php">Jetzt Kontakt aufnehmen</a>
-                    </p>
-                </div>
-                
-                <div style="margin-top: var(--spacing-lg); padding: var(--spacing-md); background-color: var(--bg-light); border-radius: var(--radius-md);">
-                    <p style="margin: 0; font-size: 0.875rem; color: var(--text-light);">
-                        <strong>Demo-Zugänge:</strong><br>
-                        Admin: admin@mdc-fm.de / Admin123!<br>
-                        Kunde: kunde@beispiel.de / Kunde123!
                     </p>
                 </div>
             </div>

@@ -1,0 +1,28 @@
+# Hochgeladene Dateien duerfen niemals als Programmcode ausgefuehrt werden
+
+# PHP-Interpreter fuer dieses Verzeichnis abschalten
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php8.c>
+    php_flag engine off
+</IfModule>
+
+# Handler und Typen zuruecksetzen, damit keine Endung Code ausloest
+<IfModule mod_mime.c>
+    RemoveHandler .php .phtml .php3 .php4 .php5 .php7 .php8 .phar .pht .cgi .pl .py .shtml .htm .html
+    RemoveType .php .phtml .php3 .php4 .php5 .php7 .php8 .phar .pht
+</IfModule>
+
+SetHandler default-handler
+AddType text/plain .php .phtml .phar .pht .cgi .pl .py
+
+# Ausfuehrbare Dateitypen komplett sperren
+<FilesMatch "(?i)\.(ph(p[0-9]?|tml|ar|t)|cgi|pl|py|sh|s?html?|htaccess)$">
+    Require all denied
+</FilesMatch>
+
+Options -ExecCGI -Indexes

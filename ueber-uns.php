@@ -8,7 +8,7 @@ include 'includes/header.php';
 ?>
 
 <!-- Hero Section -->
-<section class="hero" style="background-image: url('https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=2073'); min-height: 400px;">
+<section class="hero" style="background-image: url('/assets/images/content/ueber-uns-mdc-facility-management.jpg'); min-height: 400px;">
     <div class="container">
         <div class="hero-content">
             <h1>Über uns</h1>

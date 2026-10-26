@@ -1,14 +1,15 @@
 <?php
 require_once 'config/database.php';
+require_once 'includes/consent.php';
 
 $page_title = 'Startseite';
-$page_description = 'MDC Facility Management - Ihr professioneller Partner für Büroreinigung, Unterhaltsreinigung, Fensterreinigung, Shopreinigung, Treppenhausreinigung, Bauendreinigung, Fassadenreinigung, Glasreinigung und Photovoltaikreinigung in München und Umgebung. Höchste Qualität, zuverlässiger Service.';
+$page_description = 'Professionelle Büroreinigung, Unterhaltsreinigung und Fensterreinigung in München. Zuverlässig, geprüft und flexibel ☎ +49 89 38043537 – jetzt kostenloses Angebot.';
 
 include 'includes/header.php';
 ?>
 
 <!-- Hero Section -->
-<section class="hero" style="background-image: url('/assets/images/Fensterreinigung.png');">
+<section class="hero" style="background-image: url('/assets/images/Fensterreinigung.jpg');">
     <div class="container">
         <div class="hero-content">
             <h1>Professionelle Reinigungslösungen für München</h1>
@@ -372,15 +373,7 @@ include 'includes/header.php';
         </div>
         
         <div style="background-color: var(--bg-light); padding: var(--spacing-xl); border-radius: var(--radius-lg); text-align: center;">
-            <iframe 
-                src="https://maps.google.com/maps?q=Rosa-Kempf-Str.+23,+81248+München&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                width="100%" 
-                height="400" 
-                style="border:0; border-radius: var(--radius-md);" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+            <?php mdc_consent_map(400, 'border-radius: var(--radius-md); overflow: hidden;'); ?>
             <p style="margin-top: var(--spacing-md); color: var(--text-light);">
                 <i class="fas fa-map-marker-alt" style="color: var(--primary-color);"></i>
                 <strong>MDC Facility Management</strong> | Rosa-Kempf-Str. 23, 81248 München
@@ -394,7 +387,7 @@ include 'includes/header.php';
         <div class="home-badge-grid">
             <div class="home-badge-card home-badge-card--secondary">
                 <div class="home-badge-icon home-badge-icon--image" aria-label="Handwerkskammer Bayern Logo">
-                    <img src="/uploads/images/Handwerkskammer Logo München und Oberbayern.png" alt="Handwerkskammer Bayern Logo" class="home-badge-image">
+                    <img src="/uploads/images/Handwerkskammer Logo München und Oberbayern.png" alt="Handwerkskammer Bayern Logo" class="home-badge-image" loading="lazy" decoding="async" width="900" height="300">
                 </div>
 
                 <div class="home-badge-content">

@@ -12,7 +12,7 @@
                             Ihr professioneller Partner für Büroreinigung, Unterhaltsreinigung, Fensterreinigung und weitere professionelle Reinigungsdienstleistungen in München und Umgebung.
                         </p>
                         <div class="footer-logo">
-                            <img src="/uploads/images/MDC%20Facility%20Management%20Logo%20v2.png" alt="MDC Facility Management" style="max-height: 120px;">
+                            <img src="/uploads/images/MDC%20Facility%20Management%20Logo%20v2.png" alt="MDC Facility Management" style="max-height: 120px;" loading="lazy" decoding="async" width="900" height="408">
                         </div>
                     </div>
                     
@@ -96,6 +96,7 @@
                     <div class="footer-legal">
                         <a href="/impressum.php">Impressum</a>
                         <a href="/datenschutz.php">Datenschutz</a>
+                        <a href="#" data-consent-action="open">Cookie-Einstellungen</a>
                     </div>
                     <div class="social-links">
                         <a href="#" aria-label="Facebook" target="_blank" rel="noopener">
@@ -118,22 +119,68 @@
         <i class="fas fa-arrow-up"></i>
     </button>
     
-    <!-- Cookie Consent (DSGVO) -->
-    <div id="cookieConsent" class="cookie-consent" style="display: none;">
+    <!-- Cookie-Einwilligung (DSGVO / TDDDG) -->
+    <div id="cookieConsent" class="cookie-consent" role="dialog" aria-modal="false"
+         aria-labelledby="cookieConsentTitle" aria-describedby="cookieConsentText" hidden>
         <div class="cookie-content">
-            <p>
-                <i class="fas fa-cookie-bite"></i>
-                Wir verwenden Cookies, um Ihnen die beste Erfahrung auf unserer Website zu bieten.
-                <a href="/datenschutz.php">Mehr erfahren</a>
-            </p>
+            <div class="cookie-text">
+                <h2 id="cookieConsentTitle">
+                    <i class="fas fa-shield-halved" aria-hidden="true"></i>
+                    Datenschutz-Einstellungen
+                </h2>
+                <p id="cookieConsentText">
+                    Wir verwenden ausschließlich technisch notwendige Cookies, damit diese Website
+                    sicher funktioniert. Externe Inhalte wie Google Maps laden wir nur, wenn Sie
+                    ausdrücklich zustimmen. Ihre Entscheidung können Sie jederzeit ändern.
+                    <a href="/datenschutz.php">Mehr in der Datenschutzerklärung</a>
+                </p>
+
+                <div id="cookieConsentDetails" class="cookie-details" hidden>
+                    <div class="cookie-option">
+                        <label>
+                            <input type="checkbox" checked disabled>
+                            <span class="cookie-option-title">Technisch notwendig</span>
+                        </label>
+                        <p>
+                            Sitzungs-Cookie für Login, Formularsicherheit (CSRF) und Spam-Schutz sowie das
+                            Speichern dieser Auswahl. Ohne diese Cookies funktioniert die Website nicht.
+                            Rechtsgrundlage: § 25 Abs. 2 TDDDG, Art. 6 Abs. 1 lit. f DSGVO.
+                        </p>
+                    </div>
+                    <div class="cookie-option">
+                        <label>
+                            <input type="checkbox" data-consent-option="karten">
+                            <span class="cookie-option-title">Google Maps (externe Karte)</span>
+                        </label>
+                        <p>
+                            Zeigt unseren Standort als interaktive Karte. Beim Laden werden Ihre IP-Adresse
+                            und Gerätedaten an Google Ireland Ltd. übertragen; eine Übermittlung in die USA
+                            ist möglich. Rechtsgrundlage: Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <div class="cookie-buttons">
-                <button class="btn btn-sm btn-secondary" onclick="acceptCookies()">Alle akzeptieren</button>
-                <button class="btn btn-sm btn-outline" onclick="rejectCookies()">Ablehnen</button>
+                <button type="button" class="btn btn-sm btn-primary" data-consent-action="accept-all">
+                    Alle akzeptieren
+                </button>
+                <button type="button" class="btn btn-sm btn-primary" data-consent-action="reject-all">
+                    Nur notwendige
+                </button>
+                <button type="button" class="btn btn-sm btn-outline" data-consent-action="settings"
+                        aria-expanded="false" aria-controls="cookieConsentDetails">
+                    Einstellungen
+                </button>
+                <button type="button" class="btn btn-sm btn-outline cookie-save" data-consent-action="save">
+                    Auswahl speichern
+                </button>
             </div>
         </div>
     </div>
     
     <!-- JavaScript -->
-    <script src="/assets/js/main.js"></script>
+    <script src="<?php echo e(asset_url('/assets/js/consent.js')); ?>" defer></script>
+    <script src="<?php echo e(asset_url('/assets/js/main.js')); ?>" defer></script>
 </body>
 </html>

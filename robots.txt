@@ -5,8 +5,11 @@ Allow: /
 Disallow: /admin/
 Disallow: /config/
 Disallow: /includes/
-Disallow: /uploads/
 Disallow: /archive/
+
+# Hochgeladene Dokumente sperren, Bilder jedoch für die Bildersuche freigeben
+Disallow: /uploads/
+Allow: /uploads/images/
 
 # Disallow user-specific pages
 Disallow: /login.php
@@ -17,4 +20,4 @@ Disallow: /dashboard.php
 Disallow: /api/
 
 # Sitemap
-Sitemap: https://www.mdc-fm.de/sitemap.xml
+Sitemap: https://www.mdc-facility.de/sitemap.xml

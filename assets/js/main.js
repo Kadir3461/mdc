@@ -61,7 +61,17 @@ if (scrollToTopBtn) {
 // ===== Smooth Scrolling for Anchor Links =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
-        const target = document.querySelector(this.getAttribute('href'));
+        const href = this.getAttribute('href');
+        // Reine Platzhalter-Links (#) und Steuer-Links ohne Sprungziel überspringen
+        if (!href || href === '#' || this.hasAttribute('data-consent-action')) {
+            return;
+        }
+        let target = null;
+        try {
+            target = document.querySelector(href);
+        } catch (err) {
+            return;
+        }
         if (target) {
             e.preventDefault();
             target.scrollIntoView({
@@ -72,29 +82,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ===== Cookie Consent =====
-function checkCookieConsent() {
-    const consent = localStorage.getItem('cookieConsent');
-    if (!consent) {
-        const cookieConsent = document.getElementById('cookieConsent');
-        if (cookieConsent) {
-            cookieConsent.style.display = 'block';
-        }
-    }
-}
-
-function acceptCookies() {
-    localStorage.setItem('cookieConsent', 'accepted');
-    document.getElementById('cookieConsent').style.display = 'none';
-}
-
-function rejectCookies() {
-    localStorage.setItem('cookieConsent', 'rejected');
-    document.getElementById('cookieConsent').style.display = 'none';
-}
-
-// Check cookie consent on page load
-checkCookieConsent();
+// Cookie-Einwilligung: siehe /assets/js/consent.js
 
 // ===== Form Validation =====
 function validateContactForm(form) {

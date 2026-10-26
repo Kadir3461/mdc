@@ -8,7 +8,7 @@ include 'includes/header.php';
 ?>
 
 <!-- Hero Section -->
-<section class="hero" style="background-image: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070');">
+<section class="hero" style="background-image: url('/assets/images/content/industriereinigung-muenchen-halle.jpg');">
     <div class="container">
         <div class="hero-content">
             <h1>Industriereinigung München</h1>
@@ -68,9 +68,9 @@ include 'includes/header.php';
                 </ul>
             </div>
             <div>
-                <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?q=80&w=2070" 
+                <img src="/assets/images/content/industriereinigung-maschinenreinigung.jpg" 
                      alt="Industriereinigung München" 
-                     style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                     style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);" loading="lazy" decoding="async" width="1200" height="800">
             </div>
         </div>
     </div>

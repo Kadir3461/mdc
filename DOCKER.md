@@ -22,12 +22,12 @@ Nach dem Start der Container:
 
 **Admin-Login:**
 - URL: http://localhost:8000/login.php
-- E-Mail: `admin@mdc-fm.de`
-- Passwort: `Admin123!`
+- E-Mail: `admin@mdc-facility.de`
+- Passwort: wird beim Setup individuell vergeben (siehe database.sql)
 
 **Kunden-Login:**
 - E-Mail: `kunde@beispiel.de`
-- Passwort: `Kunde123!`
+- Passwort: wird beim Setup individuell vergeben (Konto standardmaessig inaktiv)
 
 ## 📋 Container-Übersicht
 
