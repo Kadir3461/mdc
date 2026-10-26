@@ -29,13 +29,10 @@ include 'includes/header.php';
             <div>
                 <h2>Saubere Büros, motivierte Mitarbeiter</h2>
                 <p style="font-size: 1.125rem; line-height: 1.8;">
-                    Ein gepflegtes Büro ist mehr als nur sauber – es ist die Basis für produktives Arbeiten, 
-                    motivierte Mitarbeiter und einen professionellen Auftritt gegenüber Kunden und Geschäftspartnern.
+                    Ein sauberes Büro sorgt für ein angenehmes Arbeitsumfeld und einen professionellen Eindruck. Unsere Büroreinigung umfasst die Reinigung von Arbeitsplätzen, Schreibtischen, Böden, Sanitäranlagen, Küchen und Gemeinschaftsräumen sowie die Müllentsorgung und Oberflächenpflege.
                 </p>
                 <p style="font-size: 1.125rem; line-height: 1.8;">
-                    Wir bieten maßgeschneiderte Büroreinigung für Unternehmen jeder Größe – vom Einzelbüro 
-                    bis zur großen Büroetage. Unsere Reinigung erfolgt diskret außerhalb Ihrer Arbeitszeiten 
-                    oder nach individueller Vereinbarung.
+                    Wir reinigen zuverlässig, gründlich und flexibel – auch außerhalb Ihrer Geschäftszeiten.
                 </p>
                 <ul style="list-style: none; padding: 0; margin: var(--spacing-lg) 0;">
                     <li style="padding: 0.5rem 0; display: flex; align-items: center;">
@@ -268,17 +265,6 @@ include 'includes/header.php';
                 <div class="faq-answer">
                     <p>Ganz nach Ihren Wünschen – früh morgens vor Arbeitsbeginn, abends nach Feierabend oder 
                     am Wochenende. Wir richten uns nach Ihren Bürozeiten.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h4>Was kostet eine Büroreinigung?</h4>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Die Kosten hängen von der Bürogröße, dem Reinigungsumfang und der Frequenz ab. 
-                    Für ein typisches 100 m² Büro mit wöchentlicher Reinigung ca. 150-250 € pro Monat.</p>
                 </div>
             </div>
             

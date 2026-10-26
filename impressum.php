@@ -2,7 +2,7 @@
 require_once 'config/database.php';
 
 $page_title = 'Impressum';
-$page_description = 'Impressum von MDC Facility Management, Rosa-Kempf-Str. 23, 81248 München – Anbieterkennzeichnung und Kontaktdaten gemäß § 5 TMG.';
+$page_description = 'Impressum von MDC Facility Management, Rosa-Kempf-Str. 23, 81248 München – Anbieterkennzeichnung und Kontaktdaten gemäß § 5 DDG.';
 
 include 'includes/header.php';
 ?>
@@ -12,10 +12,10 @@ include 'includes/header.php';
         <div style="max-width: 900px; margin: 0 auto;">
             <h1>Impressum</h1>
 
-            <h2>Angaben gemäß § 5 TMG</h2>
+            <h2>Angaben gemäß § 5 DDG</h2>
             <p>
                 <strong>MDC Facility &amp; Cleaning</strong><br>
-                Can Durmaz<br>
+                Mine Durmaz<br>
                 Rosa-Kempf-Str. 23<br>
                 81248 München<br>
                 Deutschland
@@ -28,25 +28,10 @@ include 'includes/header.php';
                 <strong>E-Mail:</strong> <a href="mailto:Info@mdc-fm.de">Info@mdc-fm.de</a>
             </p>
 
-            <h2>Vertretungsberechtigte Person / Verantwortlich für den Inhalt</h2>
-            <p>
-                Kadir Kaya<br>
-                Rosa-Kempf-Str. 23<br>
-                81248 München<br>
-                Deutschland
-            </p>
-
             <h2>Umsatzsteuer-ID</h2>
             <p>
                 Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
                 Bitte bei Vorliegen der tatsächlichen Steuer-ID entsprechend ergänzen.
-            </p>
-
-            <h2>EU-Streitschlichtung</h2>
-            <p>
-                Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
-                <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a><br>
-                Unsere E-Mail-Adresse finden Sie oben im Impressum.
             </p>
 
             <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
@@ -56,8 +41,8 @@ include 'includes/header.php';
 
             <h2>Haftung für Inhalte</h2>
             <p>
-                Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
-                Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen
+                Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
+                Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen
                 zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
             </p>
             <p>
@@ -73,12 +58,6 @@ include 'includes/header.php';
                 der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
             </p>
 
-            <h2>Urheberrecht</h2>
-            <p>
-                Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht.
-                Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen
-                der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers, soweit nicht ausdrücklich etwas anderes angegeben ist.
-            </p>
 
             <h2>Bildnachweise</h2>
             <p>
