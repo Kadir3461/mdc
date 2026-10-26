@@ -76,6 +76,25 @@ Eine vollständige, moderne und professionelle Unternehmenswebsite für MDC Faci
 - 1 GB freier Speicherplatz
 - SSL-Zertifikat (HTTPS)
 
+## 🚀 Deployment (Live-Server)
+
+Updates werden mit dem Skript [`deploy/deploy.py`](deploy/deploy.py) per SFTP auf den IONOS-Webspace (`/mdc/live/public`) übertragen. Es läuft unter Windows, macOS und Linux und lädt nur geänderte Dateien hoch.
+
+**Einmalig:** Python 3 installieren, dann `pip install paramiko`
+
+```bash
+git pull
+python deploy/deploy.py --dry-run   # zeigt, was hochgeladen würde
+python deploy/deploy.py             # hochladen (mit Rückfrage)
+```
+
+Unter Windows genügt ein Doppelklick auf `deploy\deploy.bat` (installiert `paramiko` bei Bedarf automatisch).
+
+- **Passwort:** in `deploy.py` bei `SFTP_PASSWORD` eintragen, über die Umgebungsvariable `MDC_SFTP_PASSWORD` setzen oder leer lassen – dann wird es beim Start abgefragt. Ein eingetragenes Passwort **nicht committen**.
+- **Weitere Optionen:** `--all` (alles neu hochladen), `--delete` (auf dem Server entfernen, was lokal gelöscht wurde; `uploads/` bleibt immer unangetastet), `--yes` (ohne Rückfrage).
+- Nicht übertragen werden u. a. `.env`, `.git`, `.ddev`, `deploy/`, `*.md` und `*.sql`. Die Produktions-`.env` liegt auf dem Server außerhalb des Webroots unter `/mdc/live/.env`.
+- Nach dem Upload prüft das Skript automatisch, ob https://www.mdc-facility.de/ fehlerfrei antwortet.
+
 ## 🚀 Installation
 
 ### Schritt 1: Dateien hochladen
