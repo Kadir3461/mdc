@@ -29,7 +29,7 @@ include 'includes/header.php';
             <div>
                 <h2>Gebäudereinigung vom Profi</h2>
                 <p style="font-size: 1.125rem; line-height: 1.8;">
-                    Ein gepflegtes Gebäude ist die Visitenkarte jeder Immobilie. Mit über 8 Jahren Erfahrung 
+                    Ein gepflegtes Gebäude ist die Visitenkarte jeder Immobilie. Mit über mehreren Jahren Erfahrung 
                     in der Gebäudereinigung sorgen wir für saubere Treppenhäuser, glänzende Eingangsbereiche 
                     und gepflegte Außenanlagen in ganz München.
                 </p>

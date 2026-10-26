@@ -15,7 +15,7 @@ include 'includes/header.php';
             <h1>Professionelle Reinigungslösungen für München</h1>
             <p>
                 Wir bieten maßgeschneiderte Reinigungs- und Facility-Management-Lösungen für Unternehmen jeder Größe. 
-                Vertrauen Sie auf über 10 Jahre Erfahrung und höchste Qualitätsstandards.
+                Vertrauen Sie auf über mehrere Jahre Erfahrung und höchste Qualitätsstandards.
             </p>
             <div class="hero-buttons">
                 <a href="/kontakt.php#angebot" class="btn btn-primary btn-lg">
@@ -182,7 +182,7 @@ include 'includes/header.php';
                 <div class="card-icon">
                     <i class="fas fa-award"></i>
                 </div>
-                <h4>Über 10 Jahre Erfahrung</h4>
+                <h4>Über mehrere Jahre Erfahrung</h4>
                 <p>Langjährige Expertise in der professionellen Reinigungsbranche</p>
             </div>
                 

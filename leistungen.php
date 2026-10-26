@@ -24,7 +24,7 @@ include 'includes/header.php';
     <div class="container">
         <h2 class="text-center">Unser Leistungsspektrum</h2>
         <p class="text-center" style="max-width: 800px; margin: 0 auto var(--spacing-2xl);">
-            Seit über 8 Jahren sind wir Ihr kompetenter Partner für alle Reinigungsdienstleistungen 
+            Seit über mehreren Jahren sind wir Ihr kompetenter Partner für alle Reinigungsdienstleistungen 
             im Raum München. Ob Industrie, Gewerbe oder Wohnimmobilien – wir bieten individuelle Lösungen 
             für jeden Bereich.
         </p>

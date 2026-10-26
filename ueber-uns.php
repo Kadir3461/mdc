@@ -12,7 +12,7 @@ include 'includes/header.php';
     <div class="container">
         <div class="hero-content">
             <h1>Über uns</h1>
-            <p>Ihr zuverlässiger Partner für professionelle Reinigungsdienstleistungen in München und Umgebung seit über 8 Jahren.</p>
+            <p>Ihr zuverlässiger Partner für professionelle Reinigungsdienstleistungen in München und Umgebung seit über mehreren Jahren.</p>
         </div>
     </div>
 </section>
@@ -24,7 +24,7 @@ include 'includes/header.php';
             <h2>MDC Facility Management</h2>
             <h3 style="color: var(--primary-color); margin-bottom: var(--spacing-md);">Sauberkeit ist Vertrauenssache</h3>
             <p style="font-size: 1.125rem; line-height: 1.8;">
-                Seit über 8 Jahren steht MDC Facility Management für professionelle Reinigungsdienstleistungen 
+                Seit über mehreren Jahren steht MDC Facility Management für professionelle Reinigungsdienstleistungen 
                 im Raum München. Was als kleines Familienunternehmen begann, ist heute ein etablierter Partner 
                 für Industrie, Gewerbe und Immobilienverwaltungen.
             </p>
